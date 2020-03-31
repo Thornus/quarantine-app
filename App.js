@@ -13,6 +13,7 @@ import langs from './data/langs';
 import axios from 'axios';
 // import getSavedData from './utils/getSavedData';
 // import BottomTabNavigator from './components/BottomTabNavigator';
+import InsertName from './screens/setup/InsertName';
 import SelectStart from './screens/setup/SelectStart';
 // import ConfirmLocation from './screens/setup/ConfirmLocation';
 
@@ -90,7 +91,7 @@ export default class App extends React.Component {
   }
 
   async createNavigation() {
-    let initialRouteName = 'SelectStart';
+    let initialRouteName = 'InsertName';
 
     // const locationFromStorage = await this.getLocationFromStorage();
     // const locationFromIp = await this.getLocationFromIp();
@@ -103,7 +104,8 @@ export default class App extends React.Component {
 
     const MainNavigator = createAnimatedSwitchNavigator(
       {
-        SelectStart: {screen: SelectStart},
+        InsertName: {screen: InsertName},
+        SelectStart: {screen: SelectStart}
         // ConfirmLocation: {
         //   screen: props => <ConfirmLocation {...props}/>,
         //   params: {

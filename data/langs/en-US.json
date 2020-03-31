@@ -1,15 +1,19 @@
 {
   "langName": "English",
+  "buttons": {
+    "next": "Next",
+    "back": "Back"
+  },
+  "insertName": {
+    "getStarted": "Let's get you started!",
+    "question": "What's your name?"
+  },
   "selectStart": {
+    "introduction": "Nice to meet you",
     "question": "When did your quarantine\nor self-isolation begin?"
   },
   "home": {
-    "title": "Home",
-    "total": "Total:",
-    "tipQuestion": "Tip?",
-    "otherTip": "Other tip",
-    "insertTip": "Insert tip",
-    "noTip": "No tip"
+    "title": "Home"
   },
   "symptomsHistory": {
     "title": "Symptoms History"
