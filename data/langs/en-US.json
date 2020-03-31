@@ -1,0 +1,23 @@
+{
+  "langName": "English",
+  "selectStart": {
+    "question": "When did your quarantine\nor self-isolation begin?"
+  },
+  "home": {
+    "title": "Home",
+    "total": "Total:",
+    "tipQuestion": "Tip?",
+    "otherTip": "Other tip",
+    "insertTip": "Insert tip",
+    "noTip": "No tip"
+  },
+  "symptomsHistory": {
+    "title": "Symptoms History"
+  },
+  "settings": {
+    "title": "Settings",
+    "ratingTitle": "Rate the app",
+    "appVersion": "App version",
+    "languageText": "Language"
+  }
+}
