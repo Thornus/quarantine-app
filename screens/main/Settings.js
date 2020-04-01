@@ -2,17 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // import { connect } from 'react-redux';
 // import setLanguageActionCreator from '../../actions/setLanguageActionCreator';
-import Constants from 'expo-constants';
-import CryptoJS from 'react-native-crypto-js';
+// import Constants from 'expo-constants';
+// import CryptoJS from 'react-native-crypto-js';
 import { AsyncStorage } from 'react-native';
-import { ENCRYPTION_KEY } from 'react-native-dotenv';
-import RNPickerSelect from 'react-native-picker-select';
+// import { ENCRYPTION_KEY } from 'react-native-dotenv';
+// import RNPickerSelect from 'react-native-picker-select';
 import i18n, { t } from 'i18n-js';
 import langs from '../../data/langs';
-import getSavedData from '../../utils/getSavedData';
+// import getSavedData from '../../utils/getSavedData';
 import GradientWrapper from '../../components/GradientWrapper';
-import LocationHeader from '../../components/LocationHeader';
-import Rating from '../../components/Rating';
 
 const langCodesToLangMap = {
   'en-US': langs.english.langName,
@@ -30,45 +28,43 @@ class Settings extends React.Component {
     selectedLanguage: langCodesToLangMap[i18n.locale]
   }
 
-  async componentDidMount() {
-    const locationData = await getSavedData('location');
-    this.setState({locationData})
-  }
+  // async componentDidMount() {
+  //   const locationData = await getSavedData('location');
+  //   this.setState({locationData})
+  // }
 
-  async selectLanguage(lang) {
-    this.setState({selectedLanguage: lang});
+  // async selectLanguage(lang) {
+  //   this.setState({selectedLanguage: lang});
 
-    for (const langCode in langCodesToLangMap) {
-      if (langCodesToLangMap[langCode] === lang && langCodesToLangMap.hasOwnProperty(langCode)) {
-        i18n.locale = langCode;
-        this.props.dispatch(setLanguageActionCreator(langCode));
+  //   for (const langCode in langCodesToLangMap) {
+  //     if (langCodesToLangMap[langCode] === lang && langCodesToLangMap.hasOwnProperty(langCode)) {
+  //       i18n.locale = langCode;
+  //       this.props.dispatch(setLanguageActionCreator(langCode));
 
-        const encryptedString = CryptoJS.AES.encrypt(JSON.stringify({langCode}), ENCRYPTION_KEY).toString();
-        await AsyncStorage.setItem('@itc:lang', encryptedString);
-        return;
-      }
-    }
-  }
+  //       const encryptedString = CryptoJS.AES.encrypt(JSON.stringify({langCode}), ENCRYPTION_KEY).toString();
+  //       await AsyncStorage.setItem('@itc:lang', encryptedString);
+  //       return;
+  //     }
+  //   }
+  // }
 
   render() {
-    let pickerItems = [];
+    // let pickerItems = [];
 
-    for(const langKey in langs) {
-      if(langs.hasOwnProperty(langKey)) {
-        const langName = langs[langKey].langName;
+    // for(const langKey in langs) {
+    //   if(langs.hasOwnProperty(langKey)) {
+    //     const langName = langs[langKey].langName;
 
-        pickerItems.push({
-          key: langName,
-          label: langName,
-          value: langName
-        });
-      }
-    }
+    //     pickerItems.push({
+    //       key: langName,
+    //       label: langName,
+    //       value: langName
+    //     });
+    //   }
+    // }
 
     return (
-      <GradientWrapper>
-        <LocationHeader navigateTo={this.props.navigation.navigate} locationData={this.state.locationData}/>
-        
+      <GradientWrapper>        
         <View style={styles.container}>
           <View style={styles.view}>
             <Text style={{...styles.text, flex: 1, paddingTop: 10}}>{t('settings.languageText').toUpperCase()}</Text>
@@ -80,8 +76,6 @@ class Settings extends React.Component {
               style={{inputIOS: styles.pickerText, inputAndroid: styles.pickerText}}
             />
           </View>
-
-          <Rating/>
         </View>
 
         <View style={styles.appVersionContainer}>

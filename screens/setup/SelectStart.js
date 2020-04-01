@@ -52,7 +52,7 @@ const SelectStart = ({navigation}) => {
         </Modal>
       </View>
 
-      <NavigationButtons navigation={navigation}/>
+      <NavigationButtons navigation={navigation} nextScreen='HowLong'/>
     </GradientWrapper>
   );
 }

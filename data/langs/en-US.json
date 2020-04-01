@@ -12,6 +12,10 @@
     "introduction": "Nice to meet you",
     "question": "When did your quarantine\nor self-isolation begin?"
   },
+  "howLong": {
+    "question": "How long will it be?",
+    "days": "days"
+  },
   "home": {
     "title": "Home"
   },

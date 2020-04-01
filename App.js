@@ -12,10 +12,10 @@ import i18n from 'i18n-js';
 import langs from './data/langs';
 import axios from 'axios';
 // import getSavedData from './utils/getSavedData';
-// import BottomTabNavigator from './components/BottomTabNavigator';
+import BottomTabNavigator from './components/BottomTabNavigator';
 import InsertName from './screens/setup/InsertName';
 import SelectStart from './screens/setup/SelectStart';
-// import ConfirmLocation from './screens/setup/ConfirmLocation';
+import HowLong from './screens/setup/HowLong';
 
 export default class App extends React.Component {
   state = {
@@ -105,16 +105,9 @@ export default class App extends React.Component {
     const MainNavigator = createAnimatedSwitchNavigator(
       {
         InsertName: {screen: InsertName},
-        SelectStart: {screen: SelectStart}
-        // ConfirmLocation: {
-        //   screen: props => <ConfirmLocation {...props}/>,
-        //   params: {
-        //     city: locationFromIp && locationFromIp.city,
-        //     regionCode: locationFromIp && locationFromIp.regionCode,
-        //     countryCode: locationFromIp && locationFromIp.countryCode
-        //   }
-        // },
-        // Main: {screen: BottomTabNavigator}
+        SelectStart: {screen: SelectStart},
+        HowLong: {screen: HowLong},
+        Main: {screen: BottomTabNavigator}
       },
       {
         initialRouteName,
@@ -137,6 +130,7 @@ export default class App extends React.Component {
     //   </Provider>
     //   : null
     // );
+    console.log(AppContainer)
 
     return(
       this.state.fontLoaded && AppContainer ?
