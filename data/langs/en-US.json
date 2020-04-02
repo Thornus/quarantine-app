@@ -10,14 +10,17 @@
   },
   "selectStart": {
     "introduction": "Nice to meet you",
-    "question": "When did your quarantine\nor self-isolation begin?"
+    "question": "When did your quarantine\nor self-isolation begin?",
+    "today": "(Today)"
   },
   "howLong": {
     "question": "How long will it be?",
     "days": "days"
   },
   "home": {
-    "title": "Home"
+    "title": "Home",
+    "day": "Day",
+    "of": "of"
   },
   "symptomsHistory": {
     "title": "Symptoms History"

@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { store } from '../../store';
 import GradientWrapper from '../../components/GradientWrapper';
 import NavigationButtons from '../../components/NavigationButtons';
 import { t } from 'i18n-js';
 
 const InsertName = ({navigation}) => {
-  const [name, setName] = useState('');
+  const {dispatch, state: globalState} = useContext(store);
+  const {name} = globalState;
 
   const navigateToNextScreen = () => {
-    navigation.navigate('SelectStart', {name: name.trim()});
+    navigation.navigate('SelectStart');
   }
 
   return (
@@ -28,12 +30,12 @@ const InsertName = ({navigation}) => {
             enablesReturnKeyAutomatically
             returnKeyType='next'
             style={styles.nameInput}
-            onChangeText={(str) => setName(str)}
+            onChangeText={(str) => dispatch({type: 'SET_NAME', payload: {name: str.trim()}})}
             onSubmitEditing={navigateToNextScreen}
           />
       </View>
 
-      <NavigationButtons navigation={navigation} nextScreen='SelectStart' isNextDisabled={!name.length} data={{name: name.trim()}} hideBack/>
+      <NavigationButtons navigation={navigation} nextScreen='SelectStart' isNextDisabled={!name.length} hideBack/>
     </GradientWrapper>
   );
 }
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
   },
   nameInput: {
     fontSize: 20,
-    fontFamily: 'montserrat-bold',
+    fontFamily: 'montserrat-semibold',
     color: 'black',
     textAlign: 'left',
     borderBottomColor: 'rgba(0, 0, 0, 0.4)',

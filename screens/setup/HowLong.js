@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { store } from '../../store';
 import GradientWrapper from '../../components/GradientWrapper';
 import NavigationButtons from '../../components/NavigationButtons';
 import NumericInput from 'react-native-numeric-input'
 import { t } from 'i18n-js';
 
 const HowLong = ({navigation}) => {
-  const [daysLength, setDaysLength] = useState(14);
+  const {dispatch, state: globalState} = useContext(store);
+  const {daysLength} = globalState;
 
   return (
     <GradientWrapper>
@@ -21,7 +23,7 @@ const HowLong = ({navigation}) => {
           value={daysLength}
           minValue={3}
           maxValue={40}
-          onChange={value => setDaysLength(value)}
+          onChange={value => dispatch({type: 'SET_DAYS_LENGTH', payload: {daysLength: value}})}
           style={styles.numericInput}
         />
       </View>

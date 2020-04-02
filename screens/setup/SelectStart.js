@@ -1,32 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, Modal, Button } from 'react-native';
+import { store } from '../../store';
+import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import GradientWrapper from '../../components/GradientWrapper';
 import NavigationButtons from '../../components/NavigationButtons';
 import { t } from 'i18n-js';
 
 const SelectStart = ({navigation}) => {
-  const [date, setDate] = useState(new Date());
-  const [dateString, setDateString] = useState(date.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'}) + ' (Today)');
+  const {dispatch, state: globalState} = useContext(store);
+  const {name, startDate} = globalState;
+
+  const momentStringFormat = 'MMMM D, YYYY';
+
+  let stringToAppend = '';
+  if(startDate.isSame(moment(), 'days')) {
+    stringToAppend = ` ${t('selectStart.today')}`;
+  }
+  const [dateString, setDateString] = useState(startDate.format(momentStringFormat) + stringToAppend);
   const [showPicker, setShowPicker] = useState(false);
 
   const onDateChange = (event, selectedDate) => {
+    selectedDate = moment(selectedDate);
+
     setShowPicker(false);
-    setDate(selectedDate);
+    dispatch({type: 'SET_START_DATE', payload: {startDate: selectedDate}});
 
     let stringToAppend = '';
-    if(selectedDate.getDate() === new Date().getDate() && selectedDate.getMonth() === new Date().getMonth()) {
-      stringToAppend = ' (Today)';
+    if(selectedDate.isSame(moment(), 'days')) {
+      stringToAppend = ` ${t('selectStart.today')}`;
     }
 
-    setDateString(selectedDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'}) + stringToAppend); // TODO: change locale according to phone
+    setDateString(selectedDate.format(momentStringFormat) + stringToAppend);
   }
 
   return (
     <GradientWrapper viewExtendedStyle={{justifyContent: 'center'}}>
       <View style={{flex: 1, justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center'}}>
         <Text style={styles.text}>
-          {`${t('selectStart.introduction')} ${navigation.getParam('name')}!`}
+          {`${t('selectStart.introduction')} ${name}!`}
         </Text>
 
         <Text style={styles.text}>
@@ -45,7 +57,7 @@ const SelectStart = ({navigation}) => {
           presentationStyle="overFullScreen"
         >
           <DateTimePicker
-            value={date}
+            value={startDate.toDate()}
             onChange={onDateChange}
             style={{position: 'relative', top: '60%'}}
           />

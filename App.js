@@ -1,14 +1,13 @@
 import React from 'react';
 import { AsyncStorage } from 'react-native';
-// import { connect } from 'react-redux';
 import * as Font from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {createAppContainer} from 'react-navigation';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-// import { Provider } from 'react-redux';
-// import store from './store';
+import { StateProvider } from './store';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
+import moment from 'moment';
 import langs from './data/langs';
 import axios from 'axios';
 // import getSavedData from './utils/getSavedData';
@@ -38,6 +37,7 @@ export default class App extends React.Component {
 
     await Font.loadAsync({
       'montserrat-regular': require('./assets/fonts/Montserrat-Regular.ttf'),
+      'montserrat-semibold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
       'montserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
       ...Ionicons.font
     });
@@ -52,6 +52,7 @@ export default class App extends React.Component {
 
     if(savedLangObject) {
       i18n.locale = savedLangObject.langCode;
+      moment.locale(savedLangObject.langCode);
     } else {
       let langExists = false;
 
@@ -65,6 +66,7 @@ export default class App extends React.Component {
       }
 
       i18n.locale = langExists ? localeLang : 'en-US';
+      moment.locale = langExists ? localeLang : 'en-US';
     }
 
     i18n.fallbacks = true;
@@ -120,28 +122,14 @@ export default class App extends React.Component {
   }
 
   render() {
-    // const AppContainer = this.state.AppContainer && connect(mapStateToProps)(this.state.AppContainer);
     const AppContainer = this.state.AppContainer && this.state.AppContainer;
-
-    // return(
-    //   this.state.fontLoaded && AppContainer ?
-    //   <Provider store={store}>
-    //     <AppContainer/>
-    //   </Provider>
-    //   : null
-    // );
-    console.log(AppContainer)
 
     return(
       this.state.fontLoaded && AppContainer ?
+        <StateProvider>
           <AppContainer/>
-        : null
+        </StateProvider>
+      : null
     );
   }
 }
-
-// const mapStateToProps = ({languageState}) => {
-//   return {
-//     language: languageState.language
-//   };
-// };
