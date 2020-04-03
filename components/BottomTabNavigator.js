@@ -1,9 +1,9 @@
 import React from 'react';
 // import { connect } from 'react-redux';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Icon from '@expo/vector-icons/Ionicons';
+import { Ionicons, MaterialCommunityIcons }from '@expo/vector-icons';
 import Home from '../screens/main/Home';
-import Breakdown from '../screens/main/Breakdown';
+import SymptomsHistory from '../screens/main/SymptomsHistory';
 import Settings from '../screens/main/Settings';
 
 const defaultNavigationOptions = ({ navigation }) => ({
@@ -11,22 +11,22 @@ const defaultNavigationOptions = ({ navigation }) => ({
     const { routeName } = navigation.state;
     let iconName = 'ios-home';
 
-    if (routeName === 'Breakdown') {
-      iconName = 'ios-list';
+    if (routeName === 'SymptomsHistory') {
+      return <MaterialCommunityIcons name='clipboard-pulse-outline' size={25} color={tintColor} style={{marginBottom: -10}}/>;
     } else if(routeName === 'Settings') {
       iconName = 'ios-settings';
     }
 
-    return <Icon name={iconName} size={25} color={tintColor}/>;
+    return <Ionicons name={iconName} size={25} color={tintColor} style={{marginBottom: -10}}/>;
   },
 });
 
 const tabBarOptions = {
   keyboardHidesTabBar: false,
-  activeTintColor: '#35B1E6',
-  inactiveTintColor: 'white',
+  activeTintColor: '#ffffff',
+  inactiveTintColor: '#c0c1bf',
   style: {
-    backgroundColor: '#1f3d4a',
+    backgroundColor: '#11999e',
     borderTopWidth: 0
   }
 };
@@ -41,7 +41,7 @@ const tabBarOptions = {
 const BottomTabNavigator = createBottomTabNavigator(
   {
     Home: {screen: Home},
-    Breakdown: {screen: Breakdown},
+    SymptomsHistory: {screen: SymptomsHistory},
     Settings: {screen: Settings}
   },
   {

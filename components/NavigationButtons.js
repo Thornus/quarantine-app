@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft: 50,
-    paddingRight: 50
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginBottom: 10
   }
 });

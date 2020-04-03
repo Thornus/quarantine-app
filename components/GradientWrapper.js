@@ -8,7 +8,7 @@ const themes = {
   scooter: ['#36D1DC', '#5B86E5'],
   sky: ['#56CCF2', '#2F80ED'],
   sunset: ['#ff7e5f', '#feb47b'],
-  white: ['#ffffff', '#ffffff']
+  white: ['#e4f9f5', '#ffffff']
 }
 
 export default class GradientWrapper extends React.Component {

@@ -34,7 +34,7 @@ const HowLong = ({navigation}) => {
         </Text>
       </View>
 
-      <NavigationButtons navigation={navigation} nextScreen='Home'/>
+      <NavigationButtons navigation={navigation} nextScreen='Home' nextText='Start'/>
     </GradientWrapper>
   );
 }
@@ -47,8 +47,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     marginBottom: 20
-  },
-  numericInput: {
-    
   }
 });

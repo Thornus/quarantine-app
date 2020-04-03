@@ -2,7 +2,8 @@
   "langName": "English",
   "buttons": {
     "next": "Next",
-    "back": "Back"
+    "back": "Back",
+    "addSymptoms": "ADD SYMPTOMS"
   },
   "insertName": {
     "getStarted": "Let's get you started!",
@@ -20,7 +21,10 @@
   "home": {
     "title": "Home",
     "day": "Day",
-    "of": "of"
+    "of": "of",
+    "messages": {
+      "day1": "You're on the right track"
+    }
   },
   "symptomsHistory": {
     "title": "Symptoms History"
