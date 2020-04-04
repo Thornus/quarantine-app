@@ -2,10 +2,13 @@ import React from 'react';
 import { AsyncStorage } from 'react-native';
 import * as Font from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import {createAppContainer} from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { enableScreens } from 'react-native-screens';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import { StateProvider } from './store';
 import * as Localization from 'expo-localization';
+import { t } from 'i18n-js';
 import i18n from 'i18n-js';
 import moment from 'moment';
 import langs from './data/langs';
@@ -15,6 +18,7 @@ import BottomTabNavigator from './components/BottomTabNavigator';
 import InsertName from './screens/setup/InsertName';
 import SelectStart from './screens/setup/SelectStart';
 import HowLong from './screens/setup/HowLong';
+import AddSymptoms from './screens/main/AddSymptoms';
 
 export default class App extends React.Component {
   state = {
@@ -23,6 +27,8 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
+
+    enableScreens(); //uses the screens of react-native-screens, boosting performance
 
     i18n.translations = {
       "en-US": langs.english,
@@ -104,12 +110,46 @@ export default class App extends React.Component {
     //   initialRouteName = 'ConfirmLocation';
     // }
 
+    //EXPLANATION: AnimatedSwitchNavigator -> StackNavigator -> TabNavigator
+    const StackNavigator = createStackNavigator(
+      {
+        ScreenWithTabs: {
+          screen: BottomTabNavigator,
+          navigationOptions: () => {
+            return {
+              headerShown: false
+            };
+          }
+        },
+        AddSymptoms: {
+          screen: AddSymptoms,
+          navigationOptions: () => {
+            return {
+              title: t('addSymptoms.title'),
+              headerStyle: {
+                backgroundColor: '#11999e'
+              },
+              headerTitleStyle: {
+                color: 'white'
+              },
+              headerBackTitleStyle: {
+                color: 'white'
+              }
+            };
+          }
+        }
+      },
+      {
+        mode: 'modal'
+      }
+    );
+
     const MainNavigator = createAnimatedSwitchNavigator(
       {
         InsertName: {screen: InsertName},
         SelectStart: {screen: SelectStart},
         HowLong: {screen: HowLong},
-        Main: {screen: BottomTabNavigator}
+        Main: {screen: StackNavigator}
       },
       {
         initialRouteName,

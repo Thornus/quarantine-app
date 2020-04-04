@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Icon from '@expo/vector-icons/Ionicons';
 import { store } from '../../store';
 import moment from 'moment';
@@ -8,12 +8,7 @@ import { t } from 'i18n-js';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
 
-const Home = () => {
-  // static navigationOptions = () => {
-  //   return {
-  //     title: t('home.title')
-  //   }
-  // }
+const Home = ({navigation}) => {
 
   const {dispatch, state: globalState} = useContext(store);
   const {name, startDate, daysLength} = globalState;
@@ -26,7 +21,7 @@ const Home = () => {
                             style={{marginLeft: 20}} 
                             name="md-add-circle-outline" 
                             size={28} 
-                            color="white"/>
+                            color="white"/>;
 
   return(
     <GradientWrapper>
@@ -34,7 +29,7 @@ const Home = () => {
       
       <View style={styles.container}>
         <Text style={styles.bodyText}>{`${t('home.messages.day1')} ${name}!`}</Text>
-        <ActionButton text={t('buttons.addSymptoms')} icon={actionButtonIcon} onPress={() => console.log('pressed')}/>
+        <ActionButton text={t('buttons.addSymptoms')} icon={actionButtonIcon} onPress={() => navigation.navigate('AddSymptoms')}/>
       </View>
     </GradientWrapper>
   );

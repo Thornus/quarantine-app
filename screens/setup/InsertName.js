@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { store } from '../../store';
 import GradientWrapper from '../../components/GradientWrapper';

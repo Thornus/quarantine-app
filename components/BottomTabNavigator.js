@@ -1,6 +1,5 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Ionicons, MaterialCommunityIcons }from '@expo/vector-icons';
 import Home from '../screens/main/Home';
 import SymptomsHistory from '../screens/main/SymptomsHistory';
@@ -24,19 +23,12 @@ const defaultNavigationOptions = ({ navigation }) => ({
 const tabBarOptions = {
   keyboardHidesTabBar: false,
   activeTintColor: '#ffffff',
-  inactiveTintColor: '#c0c1bf',
+  inactiveTintColor: 'rgba(12,108,112, 0.7)',
   style: {
     backgroundColor: '#11999e',
     borderTopWidth: 0
   }
 };
-
-
-// const mapStateToProps = ({languageState}) => {
-//   return {
-//     language: languageState.language
-//   };
-// };
 
 const BottomTabNavigator = createBottomTabNavigator(
   {
@@ -51,5 +43,4 @@ const BottomTabNavigator = createBottomTabNavigator(
   }
 );
 
-// export default connect(mapStateToProps)(BottomTabNavigator);
 export default BottomTabNavigator;

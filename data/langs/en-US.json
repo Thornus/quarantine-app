@@ -26,8 +26,25 @@
       "day1": "You're on the right track"
     }
   },
+  "addSymptoms": {
+    "title": "Add symptoms",
+    "selectSymptoms": "Select symptoms:"
+  },
   "symptomsHistory": {
     "title": "Symptoms History"
+  },
+  "symptoms": {
+    "dryCough": "Dry Cough",
+    "chestCough": "Chest Cough",
+    "sneezing": "Sneezing",
+    "soreThroat": "Sore Throat",
+    "tiredness": "Tiredness",
+    "fever": "Fever",
+    "sweating": "Sweating",
+    "chills": "Chills",
+    "bodyAches": "Body Aches",
+    "chestPain": "Chest Pain",
+    "difficultyBreathing": "Difficulty Breathing"
   },
   "settings": {
     "title": "Settings",
