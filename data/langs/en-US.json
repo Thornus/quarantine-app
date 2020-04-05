@@ -3,7 +3,8 @@
   "buttons": {
     "next": "Next",
     "back": "Back",
-    "addSymptoms": "ADD SYMPTOMS"
+    "addSymptoms": "ADD SYMPTOMS",
+    "addRemoveSymptoms": "ADD / REMOVE SYMPTOMS"
   },
   "insertName": {
     "getStarted": "Let's get you started!",
@@ -22,6 +23,7 @@
     "title": "Home",
     "day": "Day",
     "of": "of",
+    "todaySymptoms": "Today's symptoms",
     "messages": {
       "day1": "You're on the right track"
     }

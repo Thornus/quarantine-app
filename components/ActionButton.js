@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
-const ActionButton = ({text, onPress, icon, style}) => {
+const ActionButton = ({text, onPress, icon, style, enabled = true}) => {
   return (
-    <RectButton style={{...styles.button, ...style}} onPress={onPress}>
+    <RectButton style={{...styles.button, ...style}} onPress={onPress} enabled={enabled}>
       <View style={styles.view} accessible>
         <Text style={styles.text}>{text}</Text>
 

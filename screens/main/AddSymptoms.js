@@ -1,31 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 // import Icon from '@expo/vector-icons/Ionicons';
-// import { store } from '../../store';
+import { store } from '../../store';
 import { t } from 'i18n-js';
 // import getElasticFontSize from '../../utils/getElasticFontSize';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
 
 const AddSymptoms = ({navigation}) => {
-  // const {dispatch, state: globalState} = useContext(store);
-  // const {name, startDate, daysLength} = globalState;
+  const {dispatch, state: globalState} = useContext(store);
+  const {todaySymptoms} = globalState;
 
-  const [symptoms, setSymptoms] = useState([]);
-
-  const onSymptomButtonPress = (symptomText) => {
-    const symptomIndex = symptoms.indexOf(symptomText);
-
-    if(symptomIndex === -1) {
-      setSymptoms([...symptoms, symptomText]);
-    } else {
-      let newSymptomsArr = [...symptoms];
-
-      newSymptomsArr.splice(symptomIndex, 1);
-
-      setSymptoms(newSymptomsArr);
-    }
-  };
+  const [symptoms, setSymptoms] = useState(todaySymptoms);
 
   const symptomsTextArr = t('symptoms');
   let symptomButtons = [];
@@ -39,18 +25,27 @@ const AddSymptoms = ({navigation}) => {
         text={symptomText}
         onPress={() => onSymptomButtonPress(symptomText)}
         key={symptomText}
-        style={buttonStyle}/>
+        style={buttonStyle}
+      />
     );
   }
 
-  // const actionButtonIcon = <Icon 
-  //                         style={{marginLeft: 20}} 
-  //                         name="md-add-circle-outline" 
-  //                         size={28} 
-  //                         color="white"/>;
+  const onSymptomButtonPress = (symptomText) => {
+    const symptomIndex = symptoms.indexOf(symptomText);
+    let newSymptomsArr = [...symptoms];
+
+    if(symptomIndex === -1) { //add symptom
+      newSymptomsArr.push(symptomText);
+    } else { //remove symptom
+      newSymptomsArr.splice(symptomIndex, 1);
+    }
+
+    setSymptoms(newSymptomsArr);
+    dispatch({type: 'SET_TODAY_SYMPTOMS', payload: {todaySymptoms: newSymptomsArr}});
+  };
 
   return(
-    <GradientWrapper>
+    <GradientWrapper viewExtendedStyle={{marginRight: 20, marginLeft: 20}}>
       <Text style={styles.headerText}>{`${t('addSymptoms.selectSymptoms')}`}</Text>
       
       <View style={styles.symptomsContainer}>
@@ -66,19 +61,22 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 22,
     fontFamily: 'montserrat-regular',
-    color: 'black'
+    color: 'black',
+    marginTop: 40,
+    marginBottom: 20
   },
   symptomsContainer: {
     flex: 1,
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around'
+    flexWrap: 'wrap'
   },
   inactiveButton: {
-    marginBottom: 20
+    marginBottom: 20,
+    marginRight: 20
   },
   activeButton: {
     marginBottom: 20,
+    marginRight: 20,
     backgroundColor: '#16c6cc'
   }
 });

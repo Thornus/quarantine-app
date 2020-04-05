@@ -4,7 +4,8 @@ import moment from 'moment';
 const initialState = {
   name: '',
   startDate: moment(),
-  daysLength: 14
+  daysLength: 14,
+  todaySymptoms: []
 };
 
 const store = createContext(initialState);
@@ -24,6 +25,10 @@ const StateProvider = ( { children } ) => {
       case 'SET_DAYS_LENGTH':
         ({daysLength} = action.payload);
         return {...state, daysLength};
+
+      case 'SET_TODAY_SYMPTOMS':
+        ({todaySymptoms} = action.payload);
+        return {...state, todaySymptoms};
 
       default:
         throw new Error();

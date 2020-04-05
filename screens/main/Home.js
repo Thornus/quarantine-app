@@ -9,9 +9,8 @@ import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
 
 const Home = ({navigation}) => {
-
   const {dispatch, state: globalState} = useContext(store);
-  const {name, startDate, daysLength} = globalState;
+  const {name, startDate, daysLength, todaySymptoms = []} = globalState;
 
   const endDate = moment(startDate).add(daysLength, 'days');
   const today = moment();
@@ -23,14 +22,49 @@ const Home = ({navigation}) => {
                             size={28} 
                             color="white"/>;
 
+  const createTodaySymptomsButtons = () => {
+    let symptomButtons = [];
+
+    for (let i = 0; i < todaySymptoms.length; i++) {
+      const symptomText = todaySymptoms[i];
+
+      symptomButtons.push(
+        <ActionButton 
+          text={symptomText}
+          key={symptomText}
+          style={styles.symptomButton}
+          enabled={false}
+        />
+      );
+    }
+
+    return symptomButtons;
+  }
+
+  let symptomButtons = createTodaySymptomsButtons();
+
   return(
-    <GradientWrapper>
+    <GradientWrapper viewExtendedStyle={{marginRight: 20, marginLeft: 20}}>
       <Text style={styles.titleText}>{`${t('home.day')} ${dayCount} ${t('home.of')} ${daysLength}`}</Text>
       
-      <View style={styles.container}>
-        <Text style={styles.bodyText}>{`${t('home.messages.day1')} ${name}!`}</Text>
-        <ActionButton text={t('buttons.addSymptoms')} icon={actionButtonIcon} onPress={() => navigation.navigate('AddSymptoms')}/>
-      </View>
+      <Text style={{...styles.bodyText, marginBottom: 50}}>{`${t('home.messages.day1')} ${name}!`}</Text>
+
+      {symptomButtons.length ?
+        <View style={styles.symptomsSection}>
+          <Text style={{...styles.bodyText, marginBottom: 20}}>{`${t('home.todaySymptoms')}`}</Text>
+
+          <View style={styles.symptomButtonsContainer}>
+            {symptomButtons}
+          </View>
+        </View> : null
+      }
+
+      <ActionButton 
+        text={symptomButtons.length ? t('buttons.addRemoveSymptoms') : t('buttons.addSymptoms')} 
+        icon={actionButtonIcon} 
+        onPress={() => navigation.navigate('AddSymptoms')} 
+        style={styles.addButton}
+      />
     </GradientWrapper>
   );
 }
@@ -43,7 +77,7 @@ const styles = StyleSheet.create({
     fontFamily: 'montserrat-semibold',
     color: 'black',
     marginTop: 20,
-    marginBottom: 50
+    marginBottom: 80
   },
   bodyText: {
     fontSize: 18,
@@ -54,5 +88,23 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around'
+  },
+  symptomsSection: {
+    flex: 1,
+    alignSelf: 'flex-start',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  symptomButtonsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  symptomButton: {
+    marginRight: 20,
+    marginBottom: 20
+  },
+  addButton: {
+    marginBottom: 30
   }
 });
