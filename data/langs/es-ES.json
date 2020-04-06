@@ -1,27 +1,7 @@
 {
   "langName": "Español",
-  "confirmLocation": {
-    "question": "¿Estás en"
-  },
-  "selectLocation": {
-    "question": "¿Dónde estás situado?"
-  },
   "home": {
-    "title": "Inicio",
-    "total": "Total:",
-    "tipQuestion": "¿Propina?",
-    "otherTip": "Otra propina",
-    "insertTip": "Tu propina",
-    "noTip": "No propina"
-  },
-  "breakdown": {
-    "title": "Desglose",
-    "subtotal": "Subtotal",
-    "tax": "Impuesto",
-    "total": "Total",
-    "taxRate": "Tasa de impuestos",
-    "tip": "Propina",
-    "tipPercentage": "% de propina"
+    "title": "Inicio"
   },
   "settings": {
     "title": "Configuración",

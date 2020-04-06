@@ -7,6 +7,7 @@ import { t } from 'i18n-js';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
 import design from '../../utils/design';
+import saveData from '../../utils/saveData';
 
 const AddSymptoms = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
@@ -31,7 +32,7 @@ const AddSymptoms = ({navigation}) => {
     );
   }
 
-  const onSymptomButtonPress = (symptomText) => {
+  const onSymptomButtonPress = async (symptomText) => {
     const symptomIndex = symptoms.indexOf(symptomText);
     let newSymptomsArr = [...symptoms];
 
@@ -40,6 +41,8 @@ const AddSymptoms = ({navigation}) => {
     } else { //remove symptom
       newSymptomsArr.splice(symptomIndex, 1);
     }
+
+    saveData({...globalState, todaySymptoms: newSymptomsArr}, 'info');
 
     setSymptoms(newSymptomsArr);
     dispatch({type: 'SET_TODAY_SYMPTOMS', payload: {todaySymptoms: newSymptomsArr}});

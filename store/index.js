@@ -1,41 +1,64 @@
 import React, {createContext, useReducer} from 'react';
 import moment from 'moment';
+import getSavedData from '../utils/getSavedData';
 
-const initialState = {
-  name: '',
-  startDate: moment(),
-  daysLength: 14,
-  todaySymptoms: []
+let store;
+
+const getInitialState = async () => {
+  let defaultData = {
+    name: '',
+    startDate: moment(),
+    daysLength: 14,
+    todaySymptoms: []
+  };
+
+  let savedData = await getSavedData('info');
+  let data;
+
+  if(savedData) {
+    data = {
+      ...defaultData,
+      ...savedData
+    }
+  }
+
+  return data || defaultData;
 };
 
-const store = createContext(initialState);
-const { Provider } = store;
+const createStateProvider = async () => {
+  const initialState = await getInitialState();
 
-const StateProvider = ( { children } ) => {
-  const [state, dispatch] = useReducer((state, action) => {
-    switch(action.type) {
-      case 'SET_NAME':
-        ({name} = action.payload);
-        return {...state, name};
+  store = createContext(initialState);
+  const { Provider } = store;
+  
+  const StateProvider = ( { children } ) => {
+    const [state, dispatch] = useReducer((state, action) => {
+      switch(action.type) {
+        case 'SET_NAME':
+          ({name} = action.payload);
+          return {...state, name};
+  
+        case 'SET_START_DATE':
+          ({startDate} = action.payload);
+          return {...state, startDate};
+  
+        case 'SET_DAYS_LENGTH':
+          ({daysLength} = action.payload);
+          return {...state, daysLength};
+  
+        case 'SET_TODAY_SYMPTOMS':
+          ({todaySymptoms} = action.payload);
+          return {...state, todaySymptoms};
+  
+        default:
+          throw new Error();
+      };
+    }, initialState);
+  
+    return <Provider value={{state, dispatch}}>{children}</Provider>;
+  };
 
-      case 'SET_START_DATE':
-        ({startDate} = action.payload);
-        return {...state, startDate};
-
-      case 'SET_DAYS_LENGTH':
-        ({daysLength} = action.payload);
-        return {...state, daysLength};
-
-      case 'SET_TODAY_SYMPTOMS':
-        ({todaySymptoms} = action.payload);
-        return {...state, todaySymptoms};
-
-      default:
-        throw new Error();
-    };
-  }, initialState);
-
-  return <Provider value={{state, dispatch}}>{children}</Provider>;
+  return StateProvider;
 };
 
-export { store, StateProvider }
+export { store, createStateProvider }

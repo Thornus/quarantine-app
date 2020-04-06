@@ -6,10 +6,11 @@ import GradientWrapper from '../../components/GradientWrapper';
 import NavigationButtons from '../../components/NavigationButtons';
 import NumericInput from 'react-native-numeric-input';
 import { t } from 'i18n-js';
+import saveData from '../../utils/saveData';
 
 const HowLong = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
-  const {daysLength} = globalState;
+  const {name, startDate, daysLength} = globalState;
 
   return (
     <GradientWrapper>
@@ -35,7 +36,12 @@ const HowLong = ({navigation}) => {
         </Text>
       </View>
 
-      <NavigationButtons navigation={navigation} nextScreen='Home' nextText='Start'/>
+      <NavigationButtons
+        navigation={navigation}
+        nextScreen='Home'
+        nextText='Start'
+        nextCallback={() => saveData({name, startDate, daysLength}, 'info')}
+      />
     </GradientWrapper>
   );
 }

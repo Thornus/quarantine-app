@@ -1,20 +1,18 @@
 import React from 'react';
-import { AsyncStorage } from 'react-native';
 import * as Font from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { enableScreens } from 'react-native-screens';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-import { StateProvider } from './store';
+import { createStateProvider } from './store';
 import * as Localization from 'expo-localization';
 import { t } from 'i18n-js';
 import i18n from 'i18n-js';
 import moment from 'moment';
 import langs from './data/langs';
-import axios from 'axios';
 import design from './utils/design';
-// import getSavedData from './utils/getSavedData';
+import getSavedData from './utils/getSavedData';
 import BottomTabNavigator from './components/BottomTabNavigator';
 import InsertName from './screens/setup/InsertName';
 import SelectStart from './screens/setup/SelectStart';
@@ -54,8 +52,7 @@ export default class App extends React.Component {
 
   async setLanguage() {
     const localeLang = Localization.locale === 'en' ? 'en-US' : Localization.locale;
-    // const savedLangObject = await getSavedData('lang');
-    const savedLangObject = null;
+    const savedLangObject = await getSavedData('lang');
 
     if(savedLangObject) {
       i18n.locale = savedLangObject.langCode;
@@ -79,37 +76,19 @@ export default class App extends React.Component {
     i18n.fallbacks = true;
   }
 
-  async getLocationFromIp() {
-    const {data: {city, region_code, country_code}} = await axios('https://freegeoip.app/json');
+  async createNavigation() {
+    let initialRouteName = 'InsertName';
+    let data;
 
-    if(city) {
-      return {
-        city,
-        regionCode: region_code,
-        countryCode: country_code
-      }
-    }
-  }
-
-  async getLocationFromStorage() {
     try {
-      return await AsyncStorage.getItem('@itc:location');
+      data = await getSavedData('info');
     } catch (error) {
       // error retrieving data
     }
-  }
 
-  async createNavigation() {
-    let initialRouteName = 'InsertName';
-
-    // const locationFromStorage = await this.getLocationFromStorage();
-    // const locationFromIp = await this.getLocationFromIp();
-
-    // if(locationFromStorage) {
-    //   initialRouteName = 'Main';
-    // } else if(locationFromIp) {
-    //   initialRouteName = 'ConfirmLocation';
-    // }
+    if(data) {
+      initialRouteName = 'Main';
+    }
 
     //EXPLANATION: AnimatedSwitchNavigator -> StackNavigator -> TabNavigator
     const StackNavigator = createStackNavigator(
@@ -159,11 +138,14 @@ export default class App extends React.Component {
       }
     );
     
-     this.setState({AppContainer: createAppContainer(MainNavigator)});
+    this.StateProvider = await createStateProvider();
+
+    this.setState({AppContainer: createAppContainer(MainNavigator)});
   }
 
   render() {
     const AppContainer = this.state.AppContainer && this.state.AppContainer;
+    const StateProvider = this.StateProvider;
 
     return(
       this.state.fontLoaded && AppContainer ?
