@@ -1,15 +1,7 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
-const themes = {
-  asteroid: ['#0F2027', '#203A43', '#2C5364'],
-  coal: ['#EB5757', '#000000'],
-  scooter: ['#36D1DC', '#5B86E5'],
-  sky: ['#56CCF2', '#2F80ED'],
-  sunset: ['#ff7e5f', '#feb47b'],
-  white: ['#e4f9f5', '#ffffff']
-}
+import design from '../utils/design';
 
 export default class GradientWrapper extends React.Component {
   render() {
@@ -17,7 +9,7 @@ export default class GradientWrapper extends React.Component {
 
     return(
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <LinearGradient colors={themes.white} style={{flex: 1, ...this.props.style}}>
+        <LinearGradient colors={design.themes.white} style={{flex: 1, ...this.props.style}}>
           <SafeAreaView style={{...styles.container, ...viewExtendedStyle}}>
             {this.props.children}
           </SafeAreaView>

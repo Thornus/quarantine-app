@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-// import { connect } from 'react-redux';
+import design from '../../utils/design';
 // import setLanguageActionCreator from '../../actions/setLanguageActionCreator';
 // import Constants from 'expo-constants';
 // import CryptoJS from 'react-native-crypto-js';
@@ -79,7 +79,7 @@ class Settings extends React.Component {
         </View>
 
         <View style={styles.appVersionContainer}>
-          <Text style={{...styles.text, marginBottom: 20}}>{t('settings.appVersion').toUpperCase()} {Constants.nativeAppVersion}</Text>
+          <Text style={{...styles.text, marginBottom: design.spacing.defaultMargin}}>{t('settings.appVersion').toUpperCase()} {Constants.nativeAppVersion}</Text>
         </View>
       </GradientWrapper>
     );
@@ -101,13 +101,13 @@ const styles = StyleSheet.create({
     marginBottom: 12
   },
   text: {
-    fontFamily: 'montserrat-regular',
-    fontSize: 18,
-    color: 'white'
+    fontFamily: design.fontFamilies.regular,
+    fontSize: design.sizes.bodyFontSize,
+    color: design.colors.secondaryFontColor
   },
   pickerText: {
-    fontFamily: 'montserrat-bold',
-    fontSize: 18,
+    fontFamily: design.fontFamilies.bold,
+    fontSize: design.sizes.bodyFontSize,
     color: '#ffc',
     padding: 10
   },

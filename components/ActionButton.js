@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
+import design from '../utils/design';
 
 const ActionButton = ({text, onPress, icon, style, enabled = true}) => {
   return (
@@ -18,7 +19,7 @@ export default ActionButton;
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#11999e',
+    backgroundColor: design.colors.primaryColor,
     borderRadius: 4,
     paddingLeft: 20,
     paddingTop: 12,
@@ -30,8 +31,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    fontFamily: 'montserrat-bold',
-    fontSize: 16,
-    color: 'white'
+    fontFamily: design.fontFamilies.bold,
+    fontSize: design.sizes.buttonFontSize,
+    color: design.colors.secondaryFontColor
   }
 });

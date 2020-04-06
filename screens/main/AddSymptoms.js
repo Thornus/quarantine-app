@@ -6,6 +6,7 @@ import { t } from 'i18n-js';
 // import getElasticFontSize from '../../utils/getElasticFontSize';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
+import design from '../../utils/design';
 
 const AddSymptoms = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
@@ -45,7 +46,7 @@ const AddSymptoms = ({navigation}) => {
   };
 
   return(
-    <GradientWrapper viewExtendedStyle={{marginRight: 20, marginLeft: 20}}>
+    <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
       <Text style={styles.headerText}>{`${t('addSymptoms.selectSymptoms')}`}</Text>
       
       <View style={styles.symptomsContainer}>
@@ -59,11 +60,11 @@ export default AddSymptoms;
 
 const styles = StyleSheet.create({
   headerText: {
-    fontSize: 22,
-    fontFamily: 'montserrat-regular',
-    color: 'black',
-    marginTop: 40,
-    marginBottom: 20
+    fontSize: design.sizes.headerFontSize,
+    fontFamily: design.fontFamilies.regular,
+    color: design.colors.fontColor,
+    marginTop: design.spacing.extraLargeMargin,
+    marginBottom: design.spacing.defaultMargin
   },
   symptomsContainer: {
     flex: 1,
@@ -71,12 +72,12 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   inactiveButton: {
-    marginBottom: 20,
-    marginRight: 20
+    marginBottom: design.spacing.defaultMargin,
+    marginRight: design.spacing.defaultMargin
   },
   activeButton: {
-    marginBottom: 20,
-    marginRight: 20,
-    backgroundColor: '#16c6cc'
+    marginBottom: design.spacing.defaultMargin,
+    marginRight: design.spacing.defaultMargin,
+    backgroundColor: design.colors.activeColor
   }
 });

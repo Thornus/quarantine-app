@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Ionicons, MaterialCommunityIcons }from '@expo/vector-icons';
+import design from '../utils/design';
 import Home from '../screens/main/Home';
 import SymptomsHistory from '../screens/main/SymptomsHistory';
 import Settings from '../screens/main/Settings';
@@ -22,10 +23,10 @@ const defaultNavigationOptions = ({ navigation }) => ({
 
 const tabBarOptions = {
   keyboardHidesTabBar: false,
-  activeTintColor: '#ffffff',
-  inactiveTintColor: 'rgba(12,108,112, 0.7)',
+  activeTintColor: design.colors.activeIconColor,
+  inactiveTintColor: design.colors.inactiveIconColor,
   style: {
-    backgroundColor: '#11999e',
+    backgroundColor: design.colors.primaryColor,
     borderTopWidth: 0
   }
 };

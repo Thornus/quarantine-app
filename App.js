@@ -13,6 +13,7 @@ import i18n from 'i18n-js';
 import moment from 'moment';
 import langs from './data/langs';
 import axios from 'axios';
+import design from './utils/design';
 // import getSavedData from './utils/getSavedData';
 import BottomTabNavigator from './components/BottomTabNavigator';
 import InsertName from './screens/setup/InsertName';
@@ -127,13 +128,13 @@ export default class App extends React.Component {
             return {
               title: t('addSymptoms.title'),
               headerStyle: {
-                backgroundColor: '#11999e'
+                backgroundColor: design.colors.primaryColor
               },
               headerTitleStyle: {
-                color: 'white'
+                color: design.colors.secondaryFontColor
               },
               headerBackTitleStyle: {
-                color: 'white'
+                color: design.colors.secondaryFontColor
               }
             };
           }

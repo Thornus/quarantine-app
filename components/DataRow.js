@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import design from '../../utils/design';
 
 const DataRow = ({label, number, isBold}) => {
   let fontFamily = isBold ? 'montserrat-bold' : 'montserrat-regular';
@@ -24,8 +25,8 @@ const styles = StyleSheet.create({
     marginBottom: 12
   },
   label: {
-    fontSize: 18,
-    color: 'white'
+    fontSize: design.sizes.bodyFontSize,
+    color: design.colors.secondaryFontColor
   },
   horizontalRuler: {
     flexGrow: 1,

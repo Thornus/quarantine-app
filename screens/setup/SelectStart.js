@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, Modal, Button } from 'react-native';
 import { store } from '../../store';
+import design from '../../utils/design';
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import GradientWrapper from '../../components/GradientWrapper';
@@ -73,9 +74,9 @@ export default SelectStart;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'montserrat-regular',
-    fontSize: 20,
-    color: 'black',
+    fontFamily: design.fontFamilies.regular,
+    fontSize: design.sizes.headerFontSize,
+    color: design.colors.fontColor,
     marginBottom: 10
   }
 });

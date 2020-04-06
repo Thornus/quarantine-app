@@ -4,6 +4,7 @@ import Icon from '@expo/vector-icons/Ionicons';
 import { store } from '../../store';
 import moment from 'moment';
 import { t } from 'i18n-js';
+import design from '../../utils/design';
 // import getElasticFontSize from '../../utils/getElasticFontSize';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
@@ -44,14 +45,14 @@ const Home = ({navigation}) => {
   let symptomButtons = createTodaySymptomsButtons();
 
   return(
-    <GradientWrapper viewExtendedStyle={{marginRight: 20, marginLeft: 20}}>
+    <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
       <Text style={styles.titleText}>{`${t('home.day')} ${dayCount} ${t('home.of')} ${daysLength}`}</Text>
       
       <Text style={{...styles.bodyText, marginBottom: 50}}>{`${t('home.messages.day1')} ${name}!`}</Text>
 
       {symptomButtons.length ?
         <View style={styles.symptomsSection}>
-          <Text style={{...styles.bodyText, marginBottom: 20}}>{`${t('home.todaySymptoms')}`}</Text>
+          <Text style={{...styles.bodyText, marginBottom: design.spacing.defaultMargin}}>{`${t('home.todaySymptoms')}`}</Text>
 
           <View style={styles.symptomButtonsContainer}>
             {symptomButtons}
@@ -74,15 +75,15 @@ export default Home;
 const styles = StyleSheet.create({
   titleText: {
     fontSize: 32,
-    fontFamily: 'montserrat-semibold',
-    color: 'black',
-    marginTop: 20,
-    marginBottom: 80
+    fontFamily: design.fontFamilies.semibold,
+    color: design.colors.fontColor,
+    marginTop: design.spacing.defaultMargin,
+    marginBottom: design.spacing.extraLargeMargin
   },
   bodyText: {
-    fontSize: 18,
-    fontFamily: 'montserrat-regular',
-    color: 'black'
+    fontSize: design.sizes.bodyFontSize,
+    fontFamily: design.fontFamilies.regular,
+    color: design.colors.fontColor,
   },
   container: {
     flex: 1,
@@ -101,10 +102,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   symptomButton: {
-    marginRight: 20,
-    marginBottom: 20
+    marginRight: design.spacing.defaultMargin,
+    marginBottom: design.colors.defaultMargin
   },
   addButton: {
-    marginBottom: 30
+    marginBottom: design.spacing.defaultMargin + 10
   }
 });

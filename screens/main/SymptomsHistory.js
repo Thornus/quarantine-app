@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { t } from 'i18n-js';
 import GradientWrapper from '../../components/GradientWrapper';
+import design from '../../utils/design';
 // import getSavedData from '../../utils/getSavedData';
 
 class SymptomsHistory extends React.Component {
@@ -27,8 +28,8 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
   title: {
-    fontFamily: 'montserrat-bold',
+    fontFamily: design.fontFamilies.bold,
     fontSize: 24,
-    color: 'white'
+    color: design.colors.secondaryFontColor
   }
 });

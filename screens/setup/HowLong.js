@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { store } from '../../store';
+import design from '../../utils/design';
 import GradientWrapper from '../../components/GradientWrapper';
 import NavigationButtons from '../../components/NavigationButtons';
-import NumericInput from 'react-native-numeric-input'
+import NumericInput from 'react-native-numeric-input';
 import { t } from 'i18n-js';
 
 const HowLong = ({navigation}) => {
@@ -18,7 +19,7 @@ const HowLong = ({navigation}) => {
         </Text>
       </View>
 
-      <View style={{flex: 1, maxHeight: 65, marginTop: 20}}>
+      <View style={{flex: 1, maxHeight: 65, marginTop: design.spacing.defaultMargin}}>
         <NumericInput
           value={daysLength}
           minValue={3}
@@ -43,9 +44,9 @@ export default HowLong;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'montserrat-regular',
-    fontSize: 20,
-    color: 'black',
-    marginBottom: 20
+    fontFamily: design.fontFamilies.regular,
+    fontSize: design.sizes.headerFontSize,
+    color: design.colors.fontColor,
+    marginBottom: design.spacing.defaultMargin
   }
 });

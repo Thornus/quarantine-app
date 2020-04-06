@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { store } from '../../store';
+import design from '../../utils/design';
 import GradientWrapper from '../../components/GradientWrapper';
 import NavigationButtons from '../../components/NavigationButtons';
 import { t } from 'i18n-js';
@@ -16,7 +17,7 @@ const InsertName = ({navigation}) => {
   return (
     <GradientWrapper>
       <View style={{flex: 1, justifyContent: 'center'}}>
-        <Text style={{...styles.text, marginBottom: 40}}>
+        <Text style={{...styles.text, marginBottom: design.spacing.largeMargin}}>
           {t('insertName.getStarted')}
         </Text>
 
@@ -25,14 +26,14 @@ const InsertName = ({navigation}) => {
         </Text>
 
         <TextInput
-            value={name}
-            autoFocus
-            enablesReturnKeyAutomatically
-            returnKeyType='next'
-            style={styles.nameInput}
-            onChangeText={(str) => dispatch({type: 'SET_NAME', payload: {name: str.trim()}})}
-            onSubmitEditing={navigateToNextScreen}
-          />
+          value={name}
+          autoFocus
+          enablesReturnKeyAutomatically
+          returnKeyType='next'
+          style={styles.nameInput}
+          onChangeText={(str) => dispatch({type: 'SET_NAME', payload: {name: str.trim()}})}
+          onSubmitEditing={navigateToNextScreen}
+        />
       </View>
 
       <NavigationButtons navigation={navigation} nextScreen='SelectStart' isNextDisabled={!name.length} hideBack/>
@@ -44,15 +45,15 @@ export default InsertName;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'montserrat-regular',
-    fontSize: 20,
-    color: 'black',
-    marginBottom: 20
+    fontFamily: design.fontFamilies.regular,
+    fontSize: design.sizes.headerFontSize,
+    color: design.colors.fontColor,
+    marginBottom: design.spacing.defaultMargin
   },
   nameInput: {
-    fontSize: 20,
-    fontFamily: 'montserrat-semibold',
-    color: 'black',
+    fontSize: design.sizes.headerFontSize,
+    fontFamily: design.fontFamilies.semibold,
+    color: design.colors.fontColor,
     textAlign: 'left',
     borderBottomColor: 'rgba(0, 0, 0, 0.4)',
     borderBottomWidth: 1
