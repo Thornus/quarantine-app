@@ -48,7 +48,7 @@ const Home = ({navigation}) => {
     <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
       <Text style={styles.titleText}>{`${t('home.day')} ${dayCount} ${t('home.of')} ${daysLength}`}</Text>
       
-      <Text style={{...styles.bodyText, marginBottom: 50}}>{`${t('home.messages.day1')} ${name}!`}</Text>
+      <Text style={{...styles.bodyText, marginBottom: design.spacing.largeMargin + 10}}>{`${t('home.messages.day1')} ${name}!`}</Text>
 
       {symptomButtons.length ?
         <View style={styles.symptomsSection}>

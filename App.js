@@ -70,7 +70,7 @@ export default class App extends React.Component {
       }
 
       i18n.locale = langExists ? localeLang : 'en-US';
-      moment.locale = langExists ? localeLang : 'en-US';
+      moment.locale(langExists ? localeLang : 'en-US');
     }
 
     i18n.fallbacks = true;

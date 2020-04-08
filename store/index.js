@@ -7,7 +7,7 @@ let store;
 const getInitialState = async () => {
   let defaultData = {
     name: '',
-    startDate: moment(),
+    startDate: moment().startOf('day'),
     daysLength: 14,
     todaySymptoms: []
   };

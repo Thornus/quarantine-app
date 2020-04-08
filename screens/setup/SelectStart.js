@@ -15,20 +15,20 @@ const SelectStart = ({navigation}) => {
   const momentStringFormat = 'MMMM D, YYYY';
 
   let stringToAppend = '';
-  if(startDate.isSame(moment(), 'days')) {
+  if(startDate.isSame(moment().startOf('day'), 'days')) {
     stringToAppend = ` ${t('selectStart.today')}`;
   }
   const [dateString, setDateString] = useState(startDate.format(momentStringFormat) + stringToAppend);
   const [showPicker, setShowPicker] = useState(false);
 
   const onDateChange = (event, selectedDate) => {
-    selectedDate = moment(selectedDate);
+    selectedDate = moment(selectedDate).startOf('day');
 
     setShowPicker(false);
     dispatch({type: 'SET_START_DATE', payload: {startDate: selectedDate}});
 
     let stringToAppend = '';
-    if(selectedDate.isSame(moment(), 'days')) {
+    if(selectedDate.isSame(moment().startOf('day'), 'days')) {
       stringToAppend = ` ${t('selectStart.today')}`;
     }
 
