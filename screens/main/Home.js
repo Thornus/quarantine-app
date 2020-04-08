@@ -42,13 +42,25 @@ const Home = ({navigation}) => {
     return symptomButtons;
   }
 
+  const getTodayMessage = () => {
+    if(dayCount < (daysLength/2)) {
+      return `${t('home.messages.beginning')} ${name}!`;
+    } else if(dayCount === daysLength/2) {
+      return t('home.messages.halfway').replace('{name}', name);
+    } else if(dayCount > daysLength/2 && dayCount !== daysLength) {
+      return t('home.messages.afterHalfway');
+    } else if(dayCount === daysLength) {
+      return t('home.messages.lastDay');
+    }
+  }
+
   let symptomButtons = createTodaySymptomsButtons();
 
   return(
     <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
       <Text style={styles.titleText}>{`${t('home.day')} ${dayCount} ${t('home.of')} ${daysLength}`}</Text>
       
-      <Text style={{...styles.bodyText, marginBottom: design.spacing.largeMargin + 10}}>{`${t('home.messages.day1')} ${name}!`}</Text>
+      <Text style={{...styles.bodyText, marginBottom: design.spacing.largeMargin + 10}}>{getTodayMessage()}</Text>
 
       {symptomButtons.length ?
         <View style={styles.symptomsSection}>

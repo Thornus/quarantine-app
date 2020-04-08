@@ -25,7 +25,10 @@
     "of": "of",
     "todaySymptoms": "Today's symptoms",
     "messages": {
-      "day1": "You're on the right track"
+      "beginning": "You're on the right track",
+      "halfway": "You're halfway there, {name}! Great job!",
+      "afterHalfway": "Keep going!",
+      "lastDay": "Last day of quarantine! Hurray!"
     }
   },
   "addSymptoms": {
