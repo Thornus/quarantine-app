@@ -60,6 +60,7 @@ const SelectStart = ({navigation}) => {
           <DateTimePicker
             value={startDate.toDate()}
             onChange={onDateChange}
+            maximumDate={new Date()}
             style={{position: 'relative', top: '60%'}}
           />
         </Modal>

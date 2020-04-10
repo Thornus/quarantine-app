@@ -8,6 +8,7 @@ import design from '../../utils/design';
 // import getElasticFontSize from '../../utils/getElasticFontSize';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
+import Dashboard from '../../components/Dashboard';
 
 const Home = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
@@ -15,7 +16,7 @@ const Home = ({navigation}) => {
 
   const endDate = moment(startDate).add(daysLength, 'days');
   const today = moment();
-  const dayCount = daysLength - endDate.diff(today, 'days');
+  const daysCount = daysLength - endDate.diff(today, 'days');
 
   const actionButtonIcon = <Icon 
                             style={{marginLeft: 20}} 
@@ -43,13 +44,13 @@ const Home = ({navigation}) => {
   }
 
   const getTodayMessage = () => {
-    if(dayCount < (daysLength/2)) {
+    if(daysCount < (daysLength/2)) {
       return `${t('home.messages.beginning')} ${name}!`;
-    } else if(dayCount === daysLength/2) {
+    } else if(daysCount === daysLength/2) {
       return t('home.messages.halfway').replace('{name}', name);
-    } else if(dayCount > daysLength/2 && dayCount !== daysLength) {
+    } else if(daysCount > daysLength/2 && daysCount !== daysLength) {
       return t('home.messages.afterHalfway');
-    } else if(dayCount === daysLength) {
+    } else if(daysCount === daysLength) {
       return t('home.messages.lastDay');
     }
   }
@@ -58,9 +59,11 @@ const Home = ({navigation}) => {
 
   return(
     <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
-      <Text style={styles.titleText}>{`${t('home.day')} ${dayCount} ${t('home.of')} ${daysLength}`}</Text>
+      <Text style={styles.titleText}>{`${t('home.day')} ${daysCount} ${t('home.of')} ${daysLength}`}</Text>
       
-      <Text style={{...styles.bodyText, marginBottom: design.spacing.largeMargin + 10}}>{getTodayMessage()}</Text>
+      <Text style={{...styles.bodyText}}>{getTodayMessage()}</Text>
+
+      <Dashboard/>
 
       {symptomButtons.length ?
         <View style={styles.symptomsSection}>
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
     fontFamily: design.fontFamilies.semibold,
     color: design.colors.fontColor,
     marginTop: design.spacing.defaultMargin,
-    marginBottom: design.spacing.extraLargeMargin
+    marginBottom: design.spacing.defaultMargin
   },
   bodyText: {
     fontSize: design.sizes.bodyFontSize,

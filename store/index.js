@@ -61,4 +61,4 @@ const createStateProvider = async () => {
   return StateProvider;
 };
 
-export { store, createStateProvider }
+export { store, createStateProvider };
