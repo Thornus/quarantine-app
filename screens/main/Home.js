@@ -12,11 +12,18 @@ import Dashboard from '../../components/Dashboard';
 
 const Home = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
-  const {name, startDate, daysLength, todaySymptoms = []} = globalState;
+  const {name, startDate, daysLength, symptomsByDay} = globalState;
 
   const endDate = moment(startDate).add(daysLength, 'days');
   const today = moment();
   const daysCount = daysLength - endDate.diff(today, 'days');
+
+  if(!symptomsByDay[daysCount-1]) {
+    symptomsByDay.push([]);
+    dispatch({type: 'SET_SYMPTOMS', payload: {symptomsByDay}});
+  }
+
+  const todaySymptoms = symptomsByDay[daysCount-1] || [];
 
   const actionButtonIcon = <Icon 
                             style={{marginLeft: 20}} 
@@ -78,7 +85,7 @@ const Home = ({navigation}) => {
       <ActionButton 
         text={symptomButtons.length ? t('buttons.addRemoveSymptoms') : t('buttons.addSymptoms')} 
         icon={actionButtonIcon} 
-        onPress={() => navigation.navigate('AddSymptoms')} 
+        onPress={() => navigation.navigate('AddSymptoms', {daysCount})} 
         style={styles.addButton}
       />
     </GradientWrapper>
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
   },
   symptomButton: {
     marginRight: design.spacing.defaultMargin,
-    marginBottom: design.colors.defaultMargin
+    marginBottom: design.spacing.defaultMargin
   },
   addButton: {
     marginBottom: design.spacing.defaultMargin + 10

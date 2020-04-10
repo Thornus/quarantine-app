@@ -36,7 +36,8 @@
     "selectSymptoms": "Select symptoms:"
   },
   "symptomsHistory": {
-    "title": "Symptoms History"
+    "title": "Symptoms History",
+    "noSymptoms": "No symptoms. Great!"
   },
   "symptoms": {
     "dryCough": "Dry Cough",

@@ -11,8 +11,10 @@ import saveData from '../../utils/saveData';
 
 const AddSymptoms = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
-  const {todaySymptoms} = globalState;
+  const {symptomsByDay} = globalState;
+  const daysCountIndex = navigation.getParam('daysCount') - 1;
 
+  const todaySymptoms = symptomsByDay[daysCountIndex] || [];
   const [symptoms, setSymptoms] = useState(todaySymptoms);
 
   const symptomsTextArr = t('symptoms');
@@ -42,10 +44,14 @@ const AddSymptoms = ({navigation}) => {
       newSymptomsArr.splice(symptomIndex, 1);
     }
 
-    saveData({...globalState, todaySymptoms: newSymptomsArr}, 'info');
+    let newSymptomsByDay = [...symptomsByDay];
+    newSymptomsByDay[daysCountIndex] = newSymptomsArr;
+
+    saveData({...globalState, symptomsByDay: newSymptomsByDay}, 'info');
 
     setSymptoms(newSymptomsArr);
-    dispatch({type: 'SET_TODAY_SYMPTOMS', payload: {todaySymptoms: newSymptomsArr}});
+
+    dispatch({type: 'SET_SYMPTOMS', payload: {symptomsByDay: newSymptomsByDay}});
   };
 
   return(
