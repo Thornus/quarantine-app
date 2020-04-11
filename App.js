@@ -118,9 +118,6 @@ export default class App extends React.Component {
             };
           }
         }
-      },
-      {
-        mode: 'modal'
       }
     );
 

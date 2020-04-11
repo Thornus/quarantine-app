@@ -36,7 +36,9 @@ const SymptomsHistory = () => {
   };
 
   return (
-    <GradientWrapperNoKeyboardDismiss viewExtendedStyle={{alignItems: 'left', marginHorizontal: design.spacing.defaultMargin}}>
+    <GradientWrapperNoKeyboardDismiss viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
+        <Text style={styles.titleText}>{t('symptomsHistory.title')}</Text>
+
         <FlatList
           data={symptomsByDay}
           renderItem={({item, index}) => {
@@ -73,6 +75,12 @@ const styles = StyleSheet.create({
     fontFamily: design.fontFamilies.regular,
     color: design.colors.fontColor,
     marginBottom: design.spacing.smallMargin
+  },
+  titleText: {
+    fontSize: design.sizes.headerFontSize,
+    fontFamily: design.fontFamilies.semibold,
+    color: design.colors.fontColor,
+    marginTop: design.spacing.defaultMargin
   },
   bodyText: {
     marginBottom: design.spacing.defaultMargin

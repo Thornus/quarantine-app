@@ -54,6 +54,8 @@ const Settings = () => {
 
   return (
     <GradientWrapper viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
+      <Text style={styles.titleText}>{t('settings.title')}</Text>
+      
       <View style={styles.container}>
         <View style={styles.view}>
           {/* <Text style={{...styles.text, flex: 1, paddingTop: 10}}>{t('settings.languageText').toUpperCase()}</Text> */}
@@ -89,6 +91,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: design.spacing.defaultMargin,
     marginBottom: 12
+  },
+  titleText: {
+    fontSize: design.sizes.headerFontSize,
+    fontFamily: design.fontFamilies.semibold,
+    color: design.colors.fontColor,
+    marginTop: design.spacing.defaultMargin
   },
   text: {
     fontFamily: design.fontFamilies.regular,
