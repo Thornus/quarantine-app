@@ -9,7 +9,8 @@ const getInitialState = async () => {
     name: '',
     startDate: moment().startOf('day'),
     daysLength: 14,
-    symptomsByDay: []
+    symptomsByDay: [],
+    doctorEmail: ''
   };
 
   let savedData = await getSavedData('info');
@@ -49,6 +50,10 @@ const createStateProvider = async () => {
         case 'SET_SYMPTOMS':
           ({symptomsByDay} = action.payload);
           return {...state, symptomsByDay};
+
+        case 'SET_DOCTOR_EMAIL':
+          ({doctorEmail} = action.payload);
+          return {...state, doctorEmail};
   
         default:
           throw new Error();

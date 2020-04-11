@@ -12,7 +12,7 @@ const SelectStart = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
   const {name, startDate} = globalState;
 
-  const momentStringFormat = 'MMMM D, YYYY';
+  const momentStringFormat = 'LL';
 
   let stringToAppend = '';
   if(startDate.isSame(moment().startOf('day'), 'days')) {

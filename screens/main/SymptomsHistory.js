@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
+import Icon from '@expo/vector-icons/Ionicons';
 import { store } from '../../store';
 import { t } from 'i18n-js';
+import design from '../../utils/design';
+import sendEmail from '../../utils/sendEmail';
 import {GradientWrapperNoKeyboardDismiss} from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
-import design from '../../utils/design';
 
-const SymptomsHistory = () => {
+const SymptomsHistory = ({navigation}) => {
   const {state: globalState} = useContext(store);
-  const {symptomsByDay} = globalState;
+  const {symptomsByDay, doctorEmail, name, startDate} = globalState;
 
   const Item = ({symptoms, dayNumber}) => {
     let symptomButtons = [];
@@ -16,7 +18,7 @@ const SymptomsHistory = () => {
       const symptomText = symptoms[i];
   
       symptomButtons.push(
-        <ActionButton 
+        <ActionButton
           text={symptomText}
           key={symptomText}
           style={styles.symptomButton}
@@ -35,6 +37,14 @@ const SymptomsHistory = () => {
     );
   };
 
+  const onSendPress = () => {
+    if(doctorEmail) {
+      sendEmail(doctorEmail, symptomsByDay, startDate, name);
+    } else {
+      navigation.navigate('AddDoctorEmail');
+    }
+  }
+
   return (
     <GradientWrapperNoKeyboardDismiss viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
         <Text style={styles.titleText}>{t('symptomsHistory.title')}</Text>
@@ -46,14 +56,26 @@ const SymptomsHistory = () => {
           }}
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={() => <View style={styles.separator}/>}
-          // ListFooterComponent={() => <View style={styles.separator}/>}
           style={styles.flatList}
+        />
+
+        <ActionButton 
+          text={t('buttons.sendToDoctor')} 
+          icon={mailIcon}
+          onPress={onSendPress} 
+          style={styles.mailButton}
         />
     </GradientWrapperNoKeyboardDismiss>
   );
 };
 
 export default SymptomsHistory;
+
+const mailIcon = <Icon 
+                  style={{marginLeft: design.spacing.defaultMargin}} 
+                  name="ios-mail" 
+                  size={28} 
+                  color={design.colors.secondaryFontColor}/>;
 
 const styles = StyleSheet.create({
   flatList: {
@@ -89,5 +111,8 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
     marginBottom: design.spacing.defaultMargin
+  },
+  mailButton: {
+    marginBottom: design.spacing.defaultMargin + 10
   }
 });

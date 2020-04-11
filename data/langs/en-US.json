@@ -4,7 +4,7 @@
     "next": "Next",
     "back": "Back",
     "addSymptoms": "ADD SYMPTOMS",
-    "addRemoveSymptoms": "ADD / REMOVE SYMPTOMS"
+    "sendToDoctor": "SEND TO YOUR DOCTOR"
   },
   "insertName": {
     "getStarted": "Let's get you started!",
@@ -39,7 +39,15 @@
   },
   "symptomsHistory": {
     "title": "Symptoms History",
-    "noSymptoms": "No symptoms. Great!"
+    "noSymptoms": "No symptoms. Great!",
+    "emailSubject": "'s symptoms report",
+    "emailNoSymptoms": "No symptoms"
+  },
+  "addDoctorEmail": {
+    "title": "Send to your doctor",
+    "question": "What's your doctor's email?",
+    "invalidEmailError": "That email is invalid. Try checking the spelling.",
+    "emptyEmail": "The email can't be empty."
   },
   "symptoms": {
     "dryCough": "Dry Cough",
@@ -57,6 +65,7 @@
   "settings": {
     "title": "Settings",
     "ratingTitle": "Rate the app",
+    "doctorEmail": "Your doctor's email",
     "appVersion": "App version",
     "languageText": "Language",
     "thankYou": "Thank you for using the app!"

@@ -28,7 +28,7 @@ const Home = ({navigation}) => {
   const todaySymptoms = symptomsByDay[daysCount-1] || [];
 
   const addIconWhite = <Icon 
-                          style={{marginLeft: 20}} 
+                          style={{marginLeft: design.spacing.defaultMargin}} 
                           name="md-add-circle-outline" 
                           size={28} 
                           color={design.colors.secondaryFontColor}/>;
@@ -170,6 +170,6 @@ const styles = StyleSheet.create({
     marginBottom: design.spacing.smallMargin
   },
   addButton: {
-    marginBottom: design.spacing.defaultMargin + 10
+    
   }
 });

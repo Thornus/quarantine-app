@@ -17,7 +17,8 @@ import BottomTabNavigator from './components/BottomTabNavigator';
 import InsertName from './screens/setup/InsertName';
 import SelectStart from './screens/setup/SelectStart';
 import HowLong from './screens/setup/HowLong';
-import AddSymptoms from './screens/main/AddSymptoms';
+import AddSymptoms from './screens/secondary/AddSymptoms';
+import AddDoctorEmail from './screens/secondary/AddDoctorEmail';
 
 export default class App extends React.Component {
   state = {
@@ -106,6 +107,23 @@ export default class App extends React.Component {
           navigationOptions: () => {
             return {
               title: t('addSymptoms.title'),
+              headerStyle: {
+                backgroundColor: design.colors.primaryColor
+              },
+              headerTitleStyle: {
+                color: design.colors.secondaryFontColor
+              },
+              headerBackTitleStyle: {
+                color: design.colors.secondaryFontColor
+              }
+            };
+          }
+        },
+        AddDoctorEmail: {
+          screen: AddDoctorEmail,
+          navigationOptions: () => {
+            return {
+              title: t('addDoctorEmail.title'),
               headerStyle: {
                 backgroundColor: design.colors.primaryColor
               },

@@ -5,7 +5,8 @@ const colors = {
   activeIconColor: 'white',
   inactiveIconColor: 'rgba(12, 108, 112, 0.7)',
   fontColor: 'black',
-  secondaryFontColor: 'white'
+  secondaryFontColor: 'white',
+  errorColor: 'red'
 };
 
 // SIZES
