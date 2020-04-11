@@ -36,7 +36,7 @@ const SymptomsHistory = () => {
   };
 
   return (
-    <GradientWrapperNoKeyboardDismiss viewExtendedStyle={{alignItems: 'left', marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
+    <GradientWrapperNoKeyboardDismiss viewExtendedStyle={{alignItems: 'left', marginHorizontal: design.spacing.defaultMargin}}>
         <FlatList
           data={symptomsByDay}
           renderItem={({item, index}) => {

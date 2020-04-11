@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
 import design from '../../utils/design';
-import RNPickerSelect from 'react-native-picker-select';
+// import RNPickerSelect from 'react-native-picker-select';
 import i18n, { t } from 'i18n-js';
 import langs from '../../data/langs';
-// import getSavedData from '../../utils/getSavedData';
 import GradientWrapper from '../../components/GradientWrapper';
+import Rating from '../../components/Rating';
 
 const langCodesToLangMap = {
   'en-US': langs.english.langName,
@@ -53,7 +53,7 @@ const Settings = () => {
   // }
 
   return (
-    <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
+    <GradientWrapper viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
       <View style={styles.container}>
         <View style={styles.view}>
           {/* <Text style={{...styles.text, flex: 1, paddingTop: 10}}>{t('settings.languageText').toUpperCase()}</Text> */}
@@ -65,6 +65,10 @@ const Settings = () => {
             style={{inputIOS: styles.pickerText, inputAndroid: styles.pickerText}}
           /> */}
         </View>
+
+        <Rating/>
+
+        <Text style={{...styles.text, marginTop: design.spacing.defaultMargin}}>{t('settings.thankYou')}</Text>
       </View>
 
       <View style={styles.appVersionContainer}>
@@ -83,8 +87,7 @@ const styles = StyleSheet.create({
   },
   view: {
     flexDirection: 'row',
-    marginLeft: 25,
-    marginRight: 25,
+    marginHorizontal: design.spacing.defaultMargin,
     marginBottom: 12
   },
   text: {

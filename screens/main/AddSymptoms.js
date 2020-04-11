@@ -55,7 +55,7 @@ const AddSymptoms = ({navigation}) => {
   };
 
   return(
-    <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
+    <GradientWrapper viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
       <Text style={styles.headerText}>{`${t('addSymptoms.selectSymptoms')}`}</Text>
       
       <View style={styles.symptomsContainer}>

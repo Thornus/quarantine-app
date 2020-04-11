@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import * as StoreReview from 'expo-store-review';
 import Icon from '@expo/vector-icons/Ionicons';
 import { store } from '../../store';
 import moment from 'moment';
@@ -70,18 +71,23 @@ const Home = ({navigation}) => {
     }
   }
 
+
+  useEffect(() => {
+    handleRating(daysCount);
+  });
+
   let symptomButtons = createTodaySymptomsButtons();
 
   if(today.isAfter(endDate)) {
     return(
-      <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
+      <GradientWrapper viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
         <Congrats/>
       </GradientWrapper>
     );
   }
 
   return(
-    <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
+    <GradientWrapper viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
       <Text style={styles.titleText}>{`${t('home.day')} ${daysCount} ${t('home.of')} ${daysLength}`}</Text>
       <Text style={{...styles.bodyText}}>{getTodayMessage()}</Text>
 
@@ -114,6 +120,20 @@ const Home = ({navigation}) => {
 }
 
 export default Home;
+
+const handleRating = (daysCount) => {
+  setTimeout(async () => {
+      let {rating} = await getSavedData('rating') || {};
+
+      if(!rating && daysCount > 2) {
+        if(StoreReview.isAvailableAsync()) {
+          StoreReview.requestReview();
+        }
+    
+        await saveData({rating}, 'rating');
+      }
+    }, 2000);
+}
 
 const styles = StyleSheet.create({
   titleText: {

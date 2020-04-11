@@ -58,6 +58,7 @@
     "title": "Settings",
     "ratingTitle": "Rate the app",
     "appVersion": "App version",
-    "languageText": "Language"
+    "languageText": "Language",
+    "thankYou": "Thank you for using the app!"
   }
 }
