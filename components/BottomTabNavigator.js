@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Ionicons, MaterialCommunityIcons }from '@expo/vector-icons';
+import { t } from 'i18n-js';
 import design from '../utils/design';
 import Home from '../screens/main/Home';
 import SymptomsHistory from '../screens/main/SymptomsHistory';
@@ -33,9 +34,30 @@ const tabBarOptions = {
 
 const BottomTabNavigator = createBottomTabNavigator(
   {
-    Home: {screen: Home},
-    SymptomsHistory: {screen: SymptomsHistory},
-    Settings: {screen: Settings}
+    Home: {
+      screen: Home,
+      navigationOptions: () => {
+        return {
+          title: t('home.title')
+        }
+      }
+    },
+    SymptomsHistory: {
+      screen: SymptomsHistory,
+      navigationOptions: () => {
+        return {
+          title: t('symptomsHistory.title')
+        }
+      }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: () => {
+        return {
+          title: t('settings.title')
+        }
+      }
+    }
   },
   {
     initialRouteName: 'Home',

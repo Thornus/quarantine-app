@@ -83,7 +83,6 @@ const Home = ({navigation}) => {
   return(
     <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
       <Text style={styles.titleText}>{`${t('home.day')} ${daysCount} ${t('home.of')} ${daysLength}`}</Text>
-      
       <Text style={{...styles.bodyText}}>{getTodayMessage()}</Text>
 
       <Dashboard/>
