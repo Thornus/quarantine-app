@@ -5,8 +5,8 @@ import { store } from '../../store';
 import moment from 'moment';
 import { t } from 'i18n-js';
 import design from '../../utils/design';
-// import getElasticFontSize from '../../utils/getElasticFontSize';
 import GradientWrapper from '../../components/GradientWrapper';
+import Congrats from '../../components/Congrats';
 import ActionButton from '../../components/ActionButton';
 import IconButton from '../../components/IconButton';
 import Dashboard from '../../components/Dashboard';
@@ -19,7 +19,7 @@ const Home = ({navigation}) => {
   const today = moment();
   const daysCount = daysLength - endDate.diff(today, 'days');
 
-  if(!symptomsByDay[daysCount-1]) {
+  if(!symptomsByDay[daysCount-1] && !today.isAfter(endDate)) {
     symptomsByDay.push([]);
     dispatch({type: 'SET_SYMPTOMS', payload: {symptomsByDay}});
   }
@@ -71,6 +71,14 @@ const Home = ({navigation}) => {
   }
 
   let symptomButtons = createTodaySymptomsButtons();
+
+  if(today.isAfter(endDate)) {
+    return(
+      <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
+        <Congrats/>
+      </GradientWrapper>
+    );
+  }
 
   return(
     <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>

@@ -56,7 +56,8 @@ export default SymptomsHistory;
 const styles = StyleSheet.create({
   flatList: {
     width: '100%',
-    paddingTop: design.spacing.defaultMargin
+    paddingTop: design.spacing.defaultMargin,
+    marginBottom: design.spacing.defaultMargin
   },
   symptomsContainer: {
     flex: 1,

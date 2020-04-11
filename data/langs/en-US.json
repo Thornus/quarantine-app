@@ -29,7 +29,9 @@
       "halfway": "You're halfway there, {name}! Great job!",
       "afterHalfway": "Keep going!",
       "lastDay": "Last day of quarantine! Hurray!"
-    }
+    },
+    "congrats": "Congratulations",
+    "itsOver": "Your quarantine is over.\nTime to celebrate!"
   },
   "addSymptoms": {
     "title": "Add symptoms",
