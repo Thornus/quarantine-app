@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { store } from '../../store';
 import { t } from 'i18n-js';
-import GradientWrapper from '../../components/GradientWrapper';
+import {GradientWrapperNoKeyboardDismiss} from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
 import design from '../../utils/design';
 
@@ -20,6 +20,7 @@ const SymptomsHistory = () => {
           text={symptomText}
           key={symptomText}
           style={styles.symptomButton}
+          enabled={false}
         />
       );
     }
@@ -35,22 +36,28 @@ const SymptomsHistory = () => {
   };
 
   return (
-    <GradientWrapper viewExtendedStyle={{marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
-      <FlatList
-        data={symptomsByDay}
-        renderItem={({item, index}) => {
-          return <Item symptoms={item} dayNumber={index}/>
-        }}
-        keyExtractor={(item, index) => index.toString()}
-        ItemSeparatorComponent={() => <View style={styles.separator}/>}
-      />
-    </GradientWrapper>
+    <GradientWrapperNoKeyboardDismiss viewExtendedStyle={{alignItems: 'left', marginRight: design.spacing.defaultMargin, marginLeft: design.spacing.defaultMargin}}>
+        <FlatList
+          data={symptomsByDay}
+          renderItem={({item, index}) => {
+            return <Item symptoms={item} dayNumber={index}/>
+          }}
+          keyExtractor={(item, index) => index.toString()}
+          ItemSeparatorComponent={() => <View style={styles.separator}/>}
+          // ListFooterComponent={() => <View style={styles.separator}/>}
+          style={styles.flatList}
+        />
+    </GradientWrapperNoKeyboardDismiss>
   );
 };
 
 export default SymptomsHistory;
 
 const styles = StyleSheet.create({
+  flatList: {
+    width: '100%',
+    paddingTop: design.spacing.defaultMargin
+  },
   symptomsContainer: {
     flex: 1,
     flexDirection: 'row',

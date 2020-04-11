@@ -21,10 +21,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: design.colors.primaryColor,
     borderRadius: 4,
-    paddingLeft: 20,
-    paddingTop: 12,
-    paddingRight: 20,
-    paddingBottom: 12
+    paddingHorizontal: 20,
+    paddingVertical: 12
   },
   view: {
     flexDirection: 'row',

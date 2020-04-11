@@ -8,6 +8,7 @@ import design from '../../utils/design';
 // import getElasticFontSize from '../../utils/getElasticFontSize';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
+import IconButton from '../../components/IconButton';
 import Dashboard from '../../components/Dashboard';
 
 const Home = ({navigation}) => {
@@ -25,11 +26,18 @@ const Home = ({navigation}) => {
 
   const todaySymptoms = symptomsByDay[daysCount-1] || [];
 
-  const actionButtonIcon = <Icon 
-                            style={{marginLeft: 20}} 
-                            name="md-add-circle-outline" 
-                            size={28} 
-                            color="white"/>;
+  const addIconWhite = <Icon 
+                          style={{marginLeft: 20}} 
+                          name="md-add-circle-outline" 
+                          size={28} 
+                          color={design.colors.secondaryFontColor}/>;
+
+  const addIconGreen = <Icon 
+                          style={{marginTop: 4}} 
+                          name="md-add-circle-outline" 
+                          size={28} 
+                          color={design.colors.primaryColor}/>;
+
 
   const createTodaySymptomsButtons = () => {
     let symptomButtons = [];
@@ -73,21 +81,27 @@ const Home = ({navigation}) => {
       <Dashboard/>
 
       {symptomButtons.length ?
+      
         <View style={styles.symptomsSection}>
-          <Text style={{...styles.bodyText, marginBottom: design.spacing.defaultMargin}}>{`${t('home.todaySymptoms')}`}</Text>
+          <Text style={{...styles.bodyText, marginBottom: design.spacing.smallMargin}}>{`${t('home.todaySymptoms')}`}</Text>
 
           <View style={styles.symptomButtonsContainer}>
             {symptomButtons}
-          </View>
-        </View> : null
-      }
 
-      <ActionButton 
-        text={symptomButtons.length ? t('buttons.addRemoveSymptoms') : t('buttons.addSymptoms')} 
-        icon={actionButtonIcon} 
-        onPress={() => navigation.navigate('AddSymptoms', {daysCount})} 
-        style={styles.addButton}
-      />
+            <IconButton
+              icon={addIconGreen}
+              onPress={() => navigation.navigate('AddSymptoms', {daysCount})} 
+            />
+          </View>
+        </View> :
+
+        <ActionButton 
+          text={t('buttons.addSymptoms')} 
+          icon={addIconWhite} 
+          onPress={() => navigation.navigate('AddSymptoms', {daysCount})} 
+          style={styles.addButton}
+        />
+      }
     </GradientWrapper>
   );
 }
@@ -96,11 +110,10 @@ export default Home;
 
 const styles = StyleSheet.create({
   titleText: {
-    fontSize: 32,
+    fontSize: design.sizes.titleFontSize,
     fontFamily: design.fontFamilies.semibold,
     color: design.colors.fontColor,
-    marginTop: design.spacing.defaultMargin,
-    marginBottom: design.spacing.defaultMargin
+    marginVertical: design.spacing.defaultMargin
   },
   bodyText: {
     fontSize: design.sizes.bodyFontSize,
@@ -124,8 +137,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   symptomButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
     marginRight: design.spacing.defaultMargin,
-    marginBottom: design.spacing.defaultMargin
+    marginBottom: design.spacing.smallMargin
   },
   addButton: {
     marginBottom: design.spacing.defaultMargin + 10

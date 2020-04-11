@@ -19,6 +19,22 @@ export default class GradientWrapper extends React.Component {
   }
 }
 
+class GradientWrapperNoKeyboardDismiss extends React.Component {
+  render() {
+    let viewExtendedStyle = this.props.viewExtendedStyle || {};
+
+    return(
+      <LinearGradient colors={design.themes.white} style={{flex: 1, ...this.props.style}}>
+        <SafeAreaView style={{...styles.container, ...viewExtendedStyle}}>
+          {this.props.children}
+        </SafeAreaView>
+      </LinearGradient>
+    );
+  }
+}
+
+export {GradientWrapperNoKeyboardDismiss};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
