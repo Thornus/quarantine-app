@@ -6,6 +6,7 @@ import { t } from 'i18n-js';
 import design from '../../utils/design';
 import sendEmail from '../../utils/sendEmail';
 import {GradientWrapperNoKeyboardDismiss} from '../../components/GradientWrapper';
+import Tag from '../../components/Tag';
 import ActionButton from '../../components/ActionButton';
 
 const SymptomsHistory = ({navigation}) => {
@@ -18,11 +19,9 @@ const SymptomsHistory = ({navigation}) => {
       const symptomText = symptoms[i];
   
       symptomButtons.push(
-        <ActionButton
+        <Tag
           text={symptomText}
           key={symptomText}
-          style={styles.symptomButton}
-          enabled={false}
         />
       );
     }
@@ -87,10 +86,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap'
-  },
-  symptomButton: {
-    marginBottom: design.spacing.defaultMargin,
-    marginRight: design.spacing.defaultMargin
   },
   itemTitle: {
     fontSize: design.sizes.bodyFontSize,

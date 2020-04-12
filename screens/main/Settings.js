@@ -70,7 +70,7 @@ const Settings = ({navigation}) => {
       </View>
 
       <SettingRow label={t('settings.doctorEmail')}>
-        <Text style={{fontSize: design.sizes.buttonFontSize, color: design.colors.lighterFontColor}}>{doctorEmail || t('settings.noDoctorEmail')}</Text>
+        <Text style={styles.text}>{doctorEmail || t('settings.noDoctorEmail')}</Text>
         
         <ActionButton 
           text={doctorEmail ? t('buttons.editEmail') : t('buttons.setEmail')}

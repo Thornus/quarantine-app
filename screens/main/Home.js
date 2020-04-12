@@ -11,6 +11,7 @@ import Congrats from '../../components/Congrats';
 import ActionButton from '../../components/ActionButton';
 import IconButton from '../../components/IconButton';
 import Dashboard from '../../components/Dashboard';
+import Tag from '../../components/Tag';
 
 const Home = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
@@ -40,23 +41,21 @@ const Home = ({navigation}) => {
                           color={design.colors.primaryColor}/>;
 
 
-  const createTodaySymptomsButtons = () => {
-    let symptomButtons = [];
+  const createTodaySymptomsTags = () => {
+    let symptomsTags = [];
 
     for (let i = 0; i < todaySymptoms.length; i++) {
       const symptomText = todaySymptoms[i];
 
-      symptomButtons.push(
-        <ActionButton 
+      symptomsTags.push(
+        <Tag 
           text={symptomText}
           key={symptomText}
-          style={styles.symptomButton}
-          enabled={false}
         />
       );
     }
 
-    return symptomButtons;
+    return symptomsTags;
   }
 
   const getTodayMessage = () => {
@@ -76,7 +75,7 @@ const Home = ({navigation}) => {
     handleRating(daysCount);
   });
 
-  let symptomButtons = createTodaySymptomsButtons();
+  let symptomsTags = createTodaySymptomsTags();
 
   if(today.isAfter(endDate)) {
     return(
@@ -93,13 +92,13 @@ const Home = ({navigation}) => {
 
       <Dashboard/>
 
-      {symptomButtons.length ?
+      {symptomsTags.length ?
       
         <View style={styles.symptomsSection}>
           <Text style={{...styles.bodyText, marginBottom: design.spacing.smallMargin}}>{`${t('home.todaySymptoms')}`}</Text>
 
-          <View style={styles.symptomButtonsContainer}>
-            {symptomButtons}
+          <View style={styles.symptomsTagsContainer}>
+            {symptomsTags}
 
             <IconButton
               icon={addIconGreen}
@@ -112,7 +111,6 @@ const Home = ({navigation}) => {
           text={t('buttons.addSymptoms')} 
           icon={addIconWhite} 
           onPress={() => navigation.navigate('AddSymptoms', {daysCount})} 
-          style={styles.addButton}
         />
       }
     </GradientWrapper>
@@ -158,18 +156,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
   },
-  symptomButtonsContainer: {
+  symptomsTagsContainer: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap'
-  },
-  symptomButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    marginRight: design.spacing.defaultMargin,
-    marginBottom: design.spacing.smallMargin
-  },
-  addButton: {
-    
   }
 });
