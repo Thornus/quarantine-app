@@ -36,15 +36,12 @@ const Rating = () => {
 
   return(
     <View style={styles.container}>
-      <Text style={styles.text}>{t('settings.ratingTitle')}</Text>
-
       <AirbnbRating
         isDisabled={hasRated}
         defaultRating={rating}
         showRating={false}
         onFinishRating={requestReview}
         size={25}
-        style={{backgroundColor: 'grey'}}
       />
     </View>
   );
@@ -54,14 +51,7 @@ export default Rating;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: design.spacing.defaultMargin
-  },
-  text: {
-    flex: 1,
-    fontFamily: design.fontFamilies.regular,
-    fontSize: design.sizes.bodyFontSize,
-    color: design.colors.fontColor
+    alignSelf: 'flex-start',
+    marginTop: design.spacing.smallMargin
   }
 });

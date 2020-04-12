@@ -19,6 +19,7 @@ const sizes = {
 
 // SPACING
 const spacing = {
+  extraSmallMargin: 5,
   smallMargin: 10,
   defaultMargin: 20,
   largeMargin: 40,

@@ -7,19 +7,18 @@ import design from '../../utils/design';
 import i18n, { t } from 'i18n-js';
 import langs from '../../data/langs';
 import GradientWrapper from '../../components/GradientWrapper';
+import SettingRow from '../../components/SettingRow';
 import Rating from '../../components/Rating';
+import ActionButton from '../../components/ActionButton';
 
 const langCodesToLangMap = {
   'en-US': langs.english.langName,
   'es-ES': langs.spanish.langName
 };
 
-const Settings = () => {
-  const {dispatch, state: globalState} = useContext(store);
+const Settings = ({navigation}) => {
+  const {state: globalState} = useContext(store);
   const {doctorEmail} = globalState;
-
-  const [emailValue, setEmailValue] = useState(doctorEmail);
-  const [isValidEmail, setIsValidEmail] = useState(true);
 
   // async componentDidMount() {
   //   const locationData = await getSavedData('location');
@@ -70,23 +69,19 @@ const Settings = () => {
         /> */}
       </View>
 
-      <Text style={styles.settingHeader}>{t('settings.doctorEmail')}</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={text => {
-          setEmailValue(text);
-          setIsValidEmail(true); // this is to hide the error before pressing send
-          dispatch({type: 'SET_DOCTOR_EMAIL', payload: {doctorEmail: text}});
-        }}
-        value={emailValue || doctorEmail}
-        keyboardType='email-address'
-        autoCompleteType='email'
-        textContentType='emailAddress'
-        autoCapitalize='none'
-      />
+      <SettingRow label={t('settings.doctorEmail')}>
+        <Text style={{fontSize: design.sizes.buttonFontSize, color: design.colors.lighterFontColor}}>{doctorEmail || t('settings.noDoctorEmail')}</Text>
+        
+        <ActionButton 
+          text={doctorEmail ? t('buttons.editEmail') : t('buttons.setEmail')}
+          onPress={() => navigation.navigate('AddDoctorEmail', {isSettings: true})} 
+          style={{alignSelf: 'flex-start', marginTop: design.spacing.defaultMargin}}
+        />
+      </SettingRow>
       
-
-      <Rating/>
+      <SettingRow label={t('settings.ratingTitle')}>
+        <Rating/>
+      </SettingRow>
 
       <Text style={{...styles.text, marginTop: design.spacing.defaultMargin}}>{t('settings.thankYou')}</Text>
 
@@ -111,11 +106,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: design.colors.fontColor,
     marginTop: design.spacing.defaultMargin
-  },
-  settingHeader: {
-    fontFamily: design.fontFamilies.semibold,
-    fontSize: design.sizes.buttonFontSize,
-    marginBottom: design.spacing.smallMargin
   },
   text: {
     fontFamily: design.fontFamilies.regular,
