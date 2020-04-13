@@ -1,7 +1,7 @@
 // COLORS
 const colors = {
   primaryColor: '#11999e',
-  activeColor: '#16c6cc',
+  activeColor: '#6abfc2',
   activeIconColor: 'white',
   inactiveIconColor: 'rgba(12, 108, 112, 0.7)',
   fontColor: 'black',

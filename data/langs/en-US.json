@@ -37,7 +37,7 @@
   },
   "addSymptoms": {
     "title": "Add symptoms",
-    "selectSymptoms": "Select symptoms:"
+    "selectSymptoms": "Tap on a symptom to add it."
   },
   "symptomsHistory": {
     "title": "Symptoms History",

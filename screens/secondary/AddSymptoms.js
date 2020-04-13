@@ -1,9 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-// import Icon from '@expo/vector-icons/Ionicons';
 import { store } from '../../store';
 import { t } from 'i18n-js';
-// import getElasticFontSize from '../../utils/getElasticFontSize';
 import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
 import design from '../../utils/design';
@@ -55,7 +53,7 @@ const AddSymptoms = ({navigation}) => {
   };
 
   return(
-    <GradientWrapper viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
+    <GradientWrapper viewExtendedStyle={{alignItems: 'flex-start', marginHorizontal: design.spacing.defaultMargin}}>
       <Text style={styles.headerText}>{`${t('addSymptoms.selectSymptoms')}`}</Text>
       
       <View style={styles.symptomsContainer}>
@@ -69,10 +67,10 @@ export default AddSymptoms;
 
 const styles = StyleSheet.create({
   headerText: {
-    fontSize: design.sizes.headerFontSize,
+    fontSize: design.sizes.bodyFontSize,
     fontFamily: design.fontFamilies.regular,
     color: design.colors.fontColor,
-    marginTop: design.spacing.extraLargeMargin,
+    marginTop: design.spacing.defaultMargin,
     marginBottom: design.spacing.defaultMargin
   },
   symptomsContainer: {
