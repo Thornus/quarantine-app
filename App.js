@@ -5,6 +5,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { enableScreens } from 'react-native-screens';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
+import * as Analytics from 'expo-firebase-analytics';
 import { createStateProvider } from './store';
 import * as Localization from 'expo-localization';
 import { t } from 'i18n-js';
@@ -153,6 +154,8 @@ export default class App extends React.Component {
       }
     );
     
+    Analytics.setCurrentScreen(initialRouteName);
+
     this.StateProvider = await createStateProvider();
 
     this.setState({AppContainer: createAppContainer(MainNavigator)});
@@ -165,9 +168,30 @@ export default class App extends React.Component {
     return(
       this.state.fontLoaded && AppContainer ?
         <StateProvider>
-          <AppContainer/>
+          <AppContainer 
+            onNavigationStateChange={(prevState, currentState) => {
+              const currentScreen = getActiveRouteName(currentState);
+              const prevScreen = getActiveRouteName(prevState);
+              if (prevScreen !== currentScreen) {
+                Analytics.setCurrentScreen(currentScreen);
+              }
+            }}
+          />
         </StateProvider>
       : null
     );
   }
+}
+
+const getActiveRouteName = (navigationState) => {
+  if(!navigationState) {
+    return null;
+  }
+
+  const route = navigationState.routes[navigationState.index];
+  if(route.routes) { // Parse the nested navigators
+    return getActiveRouteName(route);
+  }
+
+  return route.routeName;
 }

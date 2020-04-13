@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Quarantine and self-isolation, monitor time and symptoms",
-    "slug": "quarantine-monitor-app",
+    "name": "Quarantine - symptoms tracker and motivation",
+    "slug": "quarantine-symptoms-tracker",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -22,8 +22,24 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "web": {
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyAjeO9WxLqVHGb8y4aAQDTE0o2uiOHrVp0",
+          "authDomain": "quarantine-symptoms-tracker.firebaseapp.com",
+          "databaseURL": "https://quarantine-symptoms-tracker.firebaseio.com",
+          "projectId": "quarantine-symptoms-tracker",
+          "storageBucket": "quarantine-symptoms-tracker.appspot.com",
+          "messagingSenderId": "191789399438",
+          "appId": "1:191789399438:web:cb7ac2708541365720b8df",
+          "measurementId": "G-YK269XYP7G"
+        }
+      }
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.awesomity.quarantinesymptomstracker",
+      "googleServicesFile": "./GoogleService-Info.plist"
     }
   }
 }
