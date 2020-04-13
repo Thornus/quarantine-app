@@ -13,6 +13,20 @@ import IconButton from '../../components/IconButton';
 import Dashboard from '../../components/Dashboard';
 import Tag from '../../components/Tag';
 
+const addIconWhite = <Icon 
+                        name="md-add-circle-outline" 
+                        size={28} 
+                        color={design.colors.secondaryFontColor}
+                        style={{marginLeft: design.spacing.defaultMargin}} 
+                      />;
+
+const addIconGreen = <Icon 
+                        name="md-add-circle-outline" 
+                        size={28} 
+                        color={design.colors.primaryColor}
+                        style={{marginTop: 4}} 
+                      />;
+
 const Home = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
   const {name, startDate, daysLength, symptomsByDay} = globalState;
@@ -27,19 +41,6 @@ const Home = ({navigation}) => {
   }
 
   const todaySymptoms = symptomsByDay[daysCount-1] || [];
-
-  const addIconWhite = <Icon 
-                          style={{marginLeft: design.spacing.defaultMargin}} 
-                          name="md-add-circle-outline" 
-                          size={28} 
-                          color={design.colors.secondaryFontColor}/>;
-
-  const addIconGreen = <Icon 
-                          style={{marginTop: 4}} 
-                          name="md-add-circle-outline" 
-                          size={28} 
-                          color={design.colors.primaryColor}/>;
-
 
   const createTodaySymptomsTags = () => {
     let symptomsTags = [];

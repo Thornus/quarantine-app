@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { StyleSheet, Text, TextInput } from 'react-native';
 import Icon from '@expo/vector-icons/Ionicons';
+import FontAwesome5Icon from '@expo/vector-icons/FontAwesome5';
 import { store } from '../../store';
 import { t } from 'i18n-js';
 import design from '../../utils/design';
@@ -10,6 +11,20 @@ import GradientWrapper from '../../components/GradientWrapper';
 import ActionButton from '../../components/ActionButton';
 
 const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+
+const mailIcon = <Icon 
+                    name='ios-mail'
+                    size={28} 
+                    color={design.colors.secondaryFontColor}
+                    style={{marginLeft: design.spacing.defaultMargin}} 
+                  />;
+
+const editIcon = <FontAwesome5Icon 
+                    name='edit' 
+                    size={20} 
+                    color={design.colors.secondaryFontColor}
+                    style={{marginLeft: design.spacing.defaultMargin}} 
+                  />;
 
 const AddDoctorEmail = ({navigation}) => {
   const {dispatch, state: globalState} = useContext(store);
@@ -72,7 +87,7 @@ const AddDoctorEmail = ({navigation}) => {
 
         <ActionButton
           text={isSettings ? t('buttons.setEmail') : t('buttons.sendToDoctor') }
-          icon={isSettings ? null : mailIcon} 
+          icon={isSettings ? editIcon : mailIcon} 
           onPress={onButtonPress} 
           style={styles.mailButton}
         />
@@ -81,12 +96,6 @@ const AddDoctorEmail = ({navigation}) => {
 }
 
 export default AddDoctorEmail;
-
-const mailIcon = <Icon 
-                  style={{marginLeft: design.spacing.defaultMargin}} 
-                  name="ios-mail" 
-                  size={28} 
-                  color={design.colors.secondaryFontColor}/>;
 
 const styles = StyleSheet.create({
   text: {

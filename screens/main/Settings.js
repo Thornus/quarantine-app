@@ -2,10 +2,11 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import Constants from 'expo-constants';
 import { store } from '../../store';
-import design from '../../utils/design';
+import Icon from '@expo/vector-icons/FontAwesome5';
 // import RNPickerSelect from 'react-native-picker-select';
 import i18n, { t } from 'i18n-js';
 import langs from '../../data/langs';
+import design from '../../utils/design';
 import GradientWrapper from '../../components/GradientWrapper';
 import SettingRow from '../../components/SettingRow';
 import Rating from '../../components/Rating';
@@ -15,6 +16,14 @@ const langCodesToLangMap = {
   'en-US': langs.english.langName,
   'es-ES': langs.spanish.langName
 };
+
+
+const editIcon = <Icon 
+                    name='edit' 
+                    size={20} 
+                    color={design.colors.secondaryFontColor}
+                    style={{marginLeft: design.spacing.defaultMargin}} 
+                  />;
 
 const Settings = ({navigation}) => {
   const {state: globalState} = useContext(store);
@@ -75,6 +84,7 @@ const Settings = ({navigation}) => {
         <ActionButton 
           text={doctorEmail ? t('buttons.editEmail') : t('buttons.setEmail')}
           onPress={() => navigation.navigate('AddDoctorEmail', {isSettings: true})} 
+          icon={editIcon}
           style={{alignSelf: 'flex-start', marginTop: design.spacing.defaultMargin}}
         />
       </SettingRow>
