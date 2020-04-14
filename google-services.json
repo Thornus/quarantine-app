@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "191789399438",
+    "firebase_url": "https://quarantine-symptoms-tracker.firebaseio.com",
+    "project_id": "quarantine-symptoms-tracker",
+    "storage_bucket": "quarantine-symptoms-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191789399438:android:75073df0dd3ec12720b8df",
+        "android_client_info": {
+          "package_name": "com.awesomity.quarantinesymptomstracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191789399438-1g3dh990mgkkvch1f0dp367btdbmodb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYbIz0Oa0EEGY7fD1m8Y3CsE8v7vRXEeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191789399438-1g3dh990mgkkvch1f0dp367btdbmodb1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "191789399438-r5r0tk0lkllo63mvvmgtasneaq5k0s05.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.awesomity.quarantinesymptomstracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

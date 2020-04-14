@@ -40,6 +40,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.awesomity.quarantinesymptomstracker",
       "googleServicesFile": "./GoogleService-Info.plist"
+    },
+    "android": {
+      "package": "com.awesomity.quarantinesymptomstracker",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }
