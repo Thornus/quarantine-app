@@ -62,7 +62,7 @@ const AddDoctorEmail = ({navigation}) => {
   })
 
   return(
-    <GradientWrapper viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
+    <GradientWrapper adPosition='bottom' viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
         <Text style={styles.text}>{`${t('addDoctorEmail.question')}`}</Text>
 
         <TextInput

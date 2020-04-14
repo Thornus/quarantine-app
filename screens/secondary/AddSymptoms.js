@@ -53,7 +53,7 @@ const AddSymptoms = ({navigation}) => {
   };
 
   return(
-    <GradientWrapper viewExtendedStyle={{alignItems: 'flex-start', marginHorizontal: design.spacing.defaultMargin}}>
+    <GradientWrapper adPosition='bottom' viewExtendedStyle={{alignItems: 'flex-start', marginHorizontal: design.spacing.defaultMargin}}>
       <Text style={styles.headerText}>{`${t('addSymptoms.selectSymptoms')}`}</Text>
       
       <View style={styles.symptomsContainer}>

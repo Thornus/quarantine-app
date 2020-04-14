@@ -39,11 +39,17 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.awesomity.quarantinesymptomstracker",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-1264194119076568~6393384623"
+      }
     },
     "android": {
       "package": "com.awesomity.quarantinesymptomstracker",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-1264194119076568~7017282725"
+      }
     }
   }
 }

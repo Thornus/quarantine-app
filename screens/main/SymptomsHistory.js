@@ -5,7 +5,7 @@ import { store } from '../../store';
 import { t } from 'i18n-js';
 import design from '../../utils/design';
 import sendEmail from '../../utils/sendEmail';
-import {GradientWrapperNoKeyboardDismiss} from '../../components/GradientWrapper';
+import GradientWrapper from '../../components/GradientWrapper';
 import Tag from '../../components/Tag';
 import ActionButton from '../../components/ActionButton';
 
@@ -45,7 +45,7 @@ const SymptomsHistory = ({navigation}) => {
   }
 
   return (
-    <GradientWrapperNoKeyboardDismiss viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
+    <GradientWrapper noKeyboardDismiss viewExtendedStyle={{marginHorizontal: design.spacing.defaultMargin}}>
         <Text style={styles.titleText}>{t('symptomsHistory.title')}</Text>
 
         <FlatList
@@ -64,7 +64,7 @@ const SymptomsHistory = ({navigation}) => {
           onPress={onSendPress} 
           style={styles.mailButton}
         />
-    </GradientWrapperNoKeyboardDismiss>
+    </GradientWrapper>
   );
 };
 

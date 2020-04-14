@@ -62,7 +62,8 @@ const BottomTabNavigator = createBottomTabNavigator(
   {
     initialRouteName: 'Home',
     defaultNavigationOptions,
-    tabBarOptions
+    tabBarOptions,
+    lazy: false
   }
 );
 
