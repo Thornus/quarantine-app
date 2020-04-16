@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, Modal, Button } from 'react-native';
+import { StyleSheet, Text, View, Modal, Button, Platform } from 'react-native';
 import { store } from '../../store';
 import design from '../../utils/design';
 import moment from 'moment';
@@ -35,6 +35,29 @@ const SelectStart = ({navigation}) => {
     setDateString(selectedDate.format(momentStringFormat) + stringToAppend);
   }
 
+  let DateTimePickerComp;
+  if(Platform.OS === 'ios') {
+    DateTimePickerComp = <Modal
+                          animationType="fade"
+                          transparent
+                          visible={showPicker}
+                          presentationStyle="overFullScreen">
+                            <DateTimePicker
+                              value={startDate.toDate()}
+                              onChange={onDateChange}
+                              maximumDate={new Date()}
+                              style={{position: 'relative', top: '60%'}}
+                            />
+                         </Modal>;
+  } else {
+    DateTimePickerComp = showPicker && <DateTimePicker
+                          value={startDate.toDate()}
+                          onChange={onDateChange}
+                          maximumDate={new Date()}
+                          style={{position: 'relative', top: '60%'}}
+                         />;
+  }                
+
   return (
     <GradientWrapper viewExtendedStyle={{justifyContent: 'center'}}>
       <View style={{flex: 1, justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center'}}>
@@ -51,19 +74,7 @@ const SelectStart = ({navigation}) => {
           title={dateString}
         />
 
-        <Modal
-          animationType="fade"
-          transparent
-          visible={showPicker}
-          presentationStyle="overFullScreen"
-        >
-          <DateTimePicker
-            value={startDate.toDate()}
-            onChange={onDateChange}
-            maximumDate={new Date()}
-            style={{position: 'relative', top: '60%'}}
-          />
-        </Modal>
+       {DateTimePickerComp}
       </View>
 
       <NavigationButtons navigation={navigation} nextScreen='HowLong'/>
