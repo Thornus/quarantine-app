@@ -50,6 +50,7 @@
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-1264194119076568~7017282725"
       }
-    }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
