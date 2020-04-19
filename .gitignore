@@ -44,10 +44,13 @@ project.xcworkspace
 # Android/IntelliJ
 #
 build/
+debug/
+release/
 .idea
 .gradle
 local.properties
 *.iml
+*.hprof
 
 # node.js
 #

@@ -53,12 +53,15 @@ export default class App extends React.Component {
   }
 
   async setLanguage() {
-    const localeLang = Localization.locale === 'en' ? 'en-US' : Localization.locale;
     const savedLangObject = await getSavedData('lang');
+    const localeLang = Localization.locale === 'en' ? 'en-US' : Localization.locale;
 
     if(savedLangObject) {
       i18n.locale = savedLangObject.langCode;
-      moment.locale(savedLangObject.langCode);
+
+      if(Localization.locale !== 'en') {
+        moment.locale(savedLangObject.langCode);
+      }
     } else {
       let langExists = false;
 
@@ -72,7 +75,10 @@ export default class App extends React.Component {
       }
 
       i18n.locale = langExists ? localeLang : 'en-US';
-      moment.locale(langExists ? localeLang : 'en-US');
+
+      if(Localization.locale !== 'en' && langExists) {
+        moment.locale(localeLang);
+      }
     }
 
     i18n.fallbacks = true;
