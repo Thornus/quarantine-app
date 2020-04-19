@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   view: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: design.spacing.largeMargin,
     borderWidth: 3,
     borderColor: design.colors.primaryColor,
     paddingVertical: design.spacing.extraSmallMargin,

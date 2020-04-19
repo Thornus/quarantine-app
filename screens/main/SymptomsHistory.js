@@ -73,7 +73,7 @@ export default SymptomsHistory;
 const mailIcon = <Icon 
                   style={{marginLeft: design.spacing.defaultMargin}} 
                   name="ios-mail" 
-                  size={28} 
+                  size={design.sizes.iconSize} 
                   color={design.colors.secondaryFontColor}/>;
 
 const styles = StyleSheet.create({
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     marginTop: design.spacing.defaultMargin
   },
   bodyText: {
+    fontSize: design.sizes.buttonFontSize,
     marginBottom: design.spacing.defaultMargin
   },
   separator: {

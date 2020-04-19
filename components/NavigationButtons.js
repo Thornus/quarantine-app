@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import { t } from 'i18n-js';
 
-const NavigationButtons = ({navigation, data, nextScreen, hideBack = false, backText, backCallback, nextText, isNextDisabled = false, nextCallback}) => {
+const NavigationButtons = ({navigation, data, nextScreen, hideBack = false, backText, isBackDisabled = false, backCallback, nextText, isNextDisabled = false, nextCallback}) => {
   const onBackPress = () => {
     if(backCallback && typeof backCallback === 'function') {
       backCallback();
@@ -26,6 +26,7 @@ const NavigationButtons = ({navigation, data, nextScreen, hideBack = false, back
         <Button
           onPress={onBackPress}
           title={backText || t('buttons.back')}
+          disabled={isBackDisabled}
           style={styles.button}
         />
       }

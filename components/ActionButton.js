@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: design.colors.primaryColor,
     borderRadius: 4,
     paddingHorizontal: design.spacing.defaultMargin,
-    paddingVertical: 12
+    paddingVertical: design.spacing.defaultMargin
   },
   view: {
     flexDirection: 'row',

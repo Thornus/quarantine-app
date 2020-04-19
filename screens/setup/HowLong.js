@@ -51,7 +51,7 @@ export default HowLong;
 const styles = StyleSheet.create({
   text: {
     fontFamily: design.fontFamilies.regular,
-    fontSize: design.sizes.headerFontSize,
+    fontSize: design.sizes.bodyFontSize,
     color: design.colors.fontColor,
     marginBottom: design.spacing.defaultMargin
   }

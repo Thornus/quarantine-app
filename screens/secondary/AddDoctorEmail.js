@@ -14,7 +14,7 @@ const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}
 
 const mailIcon = <Icon 
                     name='ios-mail'
-                    size={28} 
+                    size={design.sizes.iconSize} 
                     color={design.colors.secondaryFontColor}
                     style={{marginLeft: design.spacing.defaultMargin}} 
                   />;
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '85%',
-    fontSize: design.sizes.headerFontSize,
+    fontSize: design.sizes.bodyFontSize,
     fontFamily: design.fontFamilies.semibold,
     color: design.colors.fontColor,
     textAlign: 'left',

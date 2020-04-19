@@ -24,7 +24,7 @@
 		0731D3B524204D62009CAE85 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Expo.plist; path = Quarantinesymptomstrackerandmotivation/Supporting/Expo.plist; sourceTree = "<group>"; };
 		07C2E6E3243282B30028AF0A /* app.manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = app.manifest; path = Quarantinesymptomstrackerandmotivation/Supporting/app.manifest; sourceTree = "<group>"; };
 		07C2E6E4243282B30028AF0A /* app.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = app.bundle; path = Quarantinesymptomstrackerandmotivation/Supporting/app.bundle; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Quarantinesymptomstrackerandmotivation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quarantinesymptomstrackerandmotivation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* quarantinesymptomstracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quarantinesymptomstracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Quarantinesymptomstrackerandmotivation/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Quarantinesymptomstrackerandmotivation/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Quarantinesymptomstrackerandmotivation.app */,
+				13B07F961A680F5B00A75B9A /* quarantinesymptomstracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 			);
 			name = Quarantinesymptomstrackerandmotivation;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* Quarantinesymptomstrackerandmotivation.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* quarantinesymptomstracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -149,7 +149,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 940;
-				ORGANIZATIONNAME = Facebook;
+				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Quarantinesymptomstrackerandmotivation" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -326,6 +326,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = Quarantinesymptomstrackerandmotivation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -334,6 +335,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.awesomity.quarantinesymptomstracker;
 				PRODUCT_NAME = quarantinesymptomstracker;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -346,6 +348,7 @@
 				CODE_SIGN_ENTITLEMENTS = Quarantinesymptomstrackerandmotivation/quarantinesymptomstracker.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = Quarantinesymptomstrackerandmotivation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -354,6 +357,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.awesomity.quarantinesymptomstracker;
 				PRODUCT_NAME = quarantinesymptomstracker;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -411,6 +415,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.awesomity.quarantinesymptomstracker;
 				PRODUCT_NAME = quarantinesymptomstracker;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -459,6 +464,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.awesomity.quarantinesymptomstracker;
 				PRODUCT_NAME = quarantinesymptomstracker;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

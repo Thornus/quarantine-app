@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginBottom: design.spacing.defaultMargin
   },
   symptomsContainer: {
-    flex: 1,
+    flexGrow: 1,
     flexDirection: 'row',
     flexWrap: 'wrap'
   },

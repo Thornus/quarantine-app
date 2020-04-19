@@ -41,7 +41,7 @@ const Rating = () => {
         defaultRating={rating}
         showRating={false}
         onFinishRating={requestReview}
-        size={25}
+        size={design.sizes.iconSize}
       />
     </View>
   );

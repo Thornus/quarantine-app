@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
 import { store } from '../../store';
 import Icon from '@expo/vector-icons/FontAwesome5';
@@ -19,8 +19,8 @@ const langCodesToLangMap = {
 
 
 const editIcon = <Icon 
-                    name='edit' 
-                    size={20} 
+                    name='edit'
+                    size={20}
                     color={design.colors.secondaryFontColor}
                     style={{marginLeft: design.spacing.defaultMargin}} 
                   />;

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, Modal, Button, Platform } from 'react-native';
+import { StyleSheet, Text, View, Modal, Button } from 'react-native';
 import { store } from '../../store';
 import design from '../../utils/design';
 import moment from 'moment';
@@ -77,7 +77,7 @@ const SelectStart = ({navigation}) => {
        {DateTimePickerComp}
       </View>
 
-      <NavigationButtons navigation={navigation} nextScreen='HowLong'/>
+      <NavigationButtons isBackDisabled={showPicker} isNextDisabled={showPicker} navigation={navigation} nextScreen='HowLong'/>
     </GradientWrapper>
   );
 }
@@ -87,7 +87,7 @@ export default SelectStart;
 const styles = StyleSheet.create({
   text: {
     fontFamily: design.fontFamilies.regular,
-    fontSize: design.sizes.headerFontSize,
+    fontSize: design.sizes.bodyFontSize,
     color: design.colors.fontColor,
     marginBottom: 10
   }
