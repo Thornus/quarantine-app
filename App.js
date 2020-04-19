@@ -1,4 +1,5 @@
 import React from 'react';
+import { NativeModules } from 'react-native';
 import * as Font from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createAppContainer } from 'react-navigation';
@@ -7,7 +8,6 @@ import { enableScreens } from 'react-native-screens';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import * as Analytics from 'expo-firebase-analytics';
 import { createStateProvider } from './store';
-import * as Localization from 'expo-localization';
 import { t } from 'i18n-js';
 import i18n from 'i18n-js';
 import moment from 'moment';
@@ -54,14 +54,14 @@ export default class App extends React.Component {
 
   async setLanguage() {
     const savedLangObject = await getSavedData('lang');
-    const localeLang = Localization.locale === 'en' ? 'en-US' : Localization.locale;
+    const localeLang =
+      Platform.OS === 'ios'
+        ? NativeModules.SettingsManager.settings.AppleLocale || NativeModules.SettingsManager.settings.AppleLanguages[0] //iOS 13
+        : NativeModules.I18nManager.localeIdentifier;
 
     if(savedLangObject) {
       i18n.locale = savedLangObject.langCode;
-
-      if(Localization.locale !== 'en') {
-        moment.locale(savedLangObject.langCode);
-      }
+      moment.locale(savedLangObject.langCode);
     } else {
       let langExists = false;
 
@@ -76,7 +76,7 @@ export default class App extends React.Component {
 
       i18n.locale = langExists ? localeLang : 'en-US';
 
-      if(Localization.locale !== 'en' && langExists) {
+      if(langExists) {
         moment.locale(localeLang);
       }
     }
