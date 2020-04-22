@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeModules } from 'react-native';
+import { NativeModules, StatusBar } from 'react-native';
 import * as Font from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createAppContainer } from 'react-navigation';
@@ -28,6 +28,10 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
+
+    if(Platform.OS === 'android') {
+      StatusBar.setHidden(true);
+    }
 
     enableScreens(); //uses the screens of react-native-screens, boosting performance
 
