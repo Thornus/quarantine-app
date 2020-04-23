@@ -6,7 +6,8 @@
     "addSymptoms": "ADD SYMPTOMS",
     "sendToDoctor": "SEND TO YOUR DOCTOR",
     "setEmail": "SET EMAIL",
-    "editEmail": "EDIT EMAIL"
+    "editEmail": "EDIT EMAIL",
+    "removeAds": "REMOVE ADS"
   },
   "insertName": {
     "getStarted": "Let's get you started!",

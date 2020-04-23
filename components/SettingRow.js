@@ -5,7 +5,7 @@ import design from '../utils/design';
 const SettingRow = ({label, children, style}) => {
   return(
   <View style={{...styles.container, ...style}}>
-    <Text style={styles.label}>{label}</Text>
+    {label && <Text style={styles.label}>{label}</Text>}
 
     {children}
 

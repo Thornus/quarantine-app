@@ -10,10 +10,11 @@ const getInitialState = async () => {
     startDate: moment().startOf('day'),
     daysLength: 14,
     symptomsByDay: [],
-    doctorEmail: ''
+    doctorEmail: '',
+    hasAds: true
   };
 
-  let savedData = await getSavedData('info');
+  let savedData = {...await getSavedData('info'), ...await getSavedData('ads')};
   let data;
 
   if(savedData) {
@@ -55,6 +56,10 @@ const createStateProvider = async () => {
           ({doctorEmail} = action.payload);
           return {...state, doctorEmail};
   
+        case 'SET_HAS_ADS':
+          ({hasAds} = action.payload);
+          return {...state, hasAds};
+
         default:
           throw new Error();
       };

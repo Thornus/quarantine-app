@@ -1,5 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import RNIap, {
+  purchaseErrorListener,
+  purchaseUpdatedListener
+} from 'react-native-iap';
 import Constants from 'expo-constants';
 import { store } from '../../store';
 import Icon from '@expo/vector-icons/FontAwesome5';
@@ -17,8 +21,52 @@ const langCodesToLangMap = {
   'es-ES': langs.spanish.langName
 };
 
+const itemSkus = Platform.OS === 'ios' ? [] : ['remove_ads_android'];
 
-const editIcon = <Icon 
+let purchaseUpdateSubscription = null;
+let purchaseErrorSubscription = null;
+
+purchaseUpdateSubscription = purchaseUpdatedListener((purchase) => {
+  console.log('purchaseUpdatedListener', purchase);
+  
+  const receipt = purchase.transactionReceipt;
+  if (receipt) {
+    dispatch({type: 'SET_HAS_ADS', payload: {hasAds: false}});
+    saveData({hasAds: false}, 'ads');
+
+    // Tell the store that you have delivered what has been paid for.
+    // Failure to do this will result in the purchase being refunded on Android and
+    // the purchase event will reappear on every relaunch of the app until you succeed
+    // in doing the below. It will also be impossible for the user to purchase consumables
+    // again until you do this.
+    if (Platform.OS === 'ios') {
+      RNIap.finishTransactionIOS(purchase.transactionId);
+    } else if (Platform.OS === 'android') {
+      // If not consumable
+      RNIap.acknowledgePurchaseAndroid(purchase.purchaseToken);
+    }
+
+    // From react-native-iap@4.1.0 you can simplify above `method`. Try to wrap the statement with `try` and `catch` to also grab the `error` message.
+    // If not consumable
+    RNIap.finishTransaction(purchase, false);
+  } else {
+    // Retry / conclude the purchase is fraudulent, etc...
+  }
+});
+
+purchaseErrorSubscription = purchaseErrorListener((error) => {
+  console.warn('purchaseErrorListener', error);
+});
+
+const requestPurchase = async (sku) => {
+  try {
+    await RNIap.requestPurchase(sku, false);
+  } catch (err) {
+    console.warn(err.code, err.message);
+  }
+};
+
+const editIcon = <Icon
                     name='edit'
                     size={20}
                     color={design.colors.secondaryFontColor}
@@ -27,7 +75,7 @@ const editIcon = <Icon
 
 const Settings = ({navigation}) => {
   const {state: globalState} = useContext(store);
-  const {doctorEmail} = globalState;
+  const {doctorEmail, hasAds} = globalState;
 
   // async componentDidMount() {
   //   const locationData = await getSavedData('location');
@@ -63,6 +111,18 @@ const Settings = ({navigation}) => {
   //   }
   // }
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const products = await RNIap.getProducts(itemSkus);
+        // this.setState({products});
+        console.log(products)
+      } catch(err) {
+        console.warn(err); // standardized err.code and err.message available
+      }
+    })();
+  })
+
   return (
     <GradientWrapper viewExtendedStyle={{alignItems: 'flex-start', marginHorizontal: design.spacing.defaultMargin}}>
       <Text style={styles.titleText}>{t('settings.title')}</Text>
@@ -92,6 +152,14 @@ const Settings = ({navigation}) => {
       <SettingRow label={t('settings.ratingTitle')}>
         <Rating/>
       </SettingRow>
+
+      {hasAds && <SettingRow>        
+        <ActionButton 
+          text={t('buttons.removeAds')}
+          onPress={() => requestPurchase(Platform.OS === 'ios' ? '' : 'remove_ads_android')} 
+          style={{alignSelf: 'flex-start', marginTop: design.spacing.defaultMargin, marginBottom: design.spacing.smallMargin}}
+        />
+      </SettingRow>}
 
       <Text style={{...styles.text, marginTop: design.spacing.defaultMargin}}>{t('settings.thankYou')}</Text>
 
