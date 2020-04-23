@@ -26,8 +26,6 @@ PODS:
     - React-Core
     - UMCore
     - UMImageLoaderInterface
-  - EXInAppPurchases (8.1.0):
-    - UMCore
   - EXKeepAwake (8.1.0):
     - UMCore
   - EXLinearGradient (8.1.0):
@@ -343,6 +341,8 @@ PODS:
     - React
   - RNGestureHandler (1.6.1):
     - React
+  - RNIap (4.4.7):
+    - React
   - RNRate (1.2.1):
     - React
   - RNReanimated (1.7.1):
@@ -382,7 +382,6 @@ DEPENDENCIES:
   - EXFirebaseCore (from `../node_modules/expo-firebase-core/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
-  - EXInAppPurchases (from `../node_modules/expo-in-app-purchases/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - EXLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - EXLocalization (from `../node_modules/expo-localization/ios`)
@@ -423,6 +422,7 @@ DEPENDENCIES:
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNIap (from `../node_modules/react-native-iap`)
   - RNRate (from `../node_modules/react-native-rate`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -478,8 +478,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-font/ios"
   EXImageLoader:
     :path: "../node_modules/expo-image-loader/ios"
-  EXInAppPurchases:
-    :path: "../node_modules/expo-in-app-purchases/ios"
   EXKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
   EXLinearGradient:
@@ -554,6 +552,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-device-info"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNIap:
+    :path: "../node_modules/react-native-iap"
   RNRate:
     :path: "../node_modules/react-native-rate"
   RNReanimated:
@@ -604,7 +604,6 @@ SPEC CHECKSUMS:
   EXFirebaseCore: 8e8db881b9ea82d0f2194081946e76cd0efb0b5b
   EXFont: 00c6f9daffd8f4f7775d4191a6464bcd9021044a
   EXImageLoader: 5c9d1bf408443ac4d4f44463eaf3b0d03bc70425
-  EXInAppPurchases: 2499d866794f8de19a32b85fdf42834ebf2886df
   EXKeepAwake: 4b53df0b4e87aa9f38bf57461e07fc167716a760
   EXLinearGradient: 8189387e3a65c2a9ba5507432e3a099ea8f7ea86
   EXLocalization: 74aefb246a9760c0839f6744feea0c325b475f9d
@@ -654,6 +653,7 @@ SPEC CHECKSUMS:
   RNDateTimePicker: 501ab152e78882c183607e05074c37ce19ace5bf
   RNDeviceInfo: 59d3d9a0ac50adfc3a2d3c27bbbb4efc7ae8984c
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  RNIap: cb23bdbc7d27cd42cbc12232fe92f73cb6700b7d
   RNRate: a747cbaa6040d72994861864c988037fe0696548
   RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
   RNScreens: 812b79d384e2bea7eebc4ec981469160d4948fd5
@@ -674,6 +674,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 4e6c4c34a89512e2225d336154df1cb689226a29
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 68cf6efda2ea47c130368c706afb77955d4fe574
+PODFILE CHECKSUM: 57805cead3e1ebba2500fb7a7c1849a213cd4c1c
 
 COCOAPODS: 1.8.0
