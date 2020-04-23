@@ -47,8 +47,6 @@ PODS:
   - EXSQLite (8.1.0):
     - UMCore
     - UMFileSystemInterface
-  - EXStoreReview (2.1.0):
-    - UMCore
   - EXUpdates (0.1.2):
     - React
     - UMCore
@@ -345,6 +343,8 @@ PODS:
     - React
   - RNGestureHandler (1.6.1):
     - React
+  - RNRate (1.2.1):
+    - React
   - RNReanimated (1.7.1):
     - React
   - RNScreens (2.2.0):
@@ -390,7 +390,6 @@ DEPENDENCIES:
   - EXMailComposer (from `../node_modules/expo-mail-composer/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - EXSQLite (from `../node_modules/expo-sqlite/ios`)
-  - EXStoreReview (from `../node_modules/expo-store-review/ios`)
   - EXUpdates (from `../node_modules/expo-updates/ios`)
   - EXWebBrowser (from `../node_modules/expo-web-browser/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -424,6 +423,7 @@ DEPENDENCIES:
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNRate (from `../node_modules/react-native-rate`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -494,8 +494,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-permissions/ios"
   EXSQLite:
     :path: "../node_modules/expo-sqlite/ios"
-  EXStoreReview:
-    :path: "../node_modules/expo-store-review/ios"
   EXUpdates:
     :path: "../node_modules/expo-updates/ios"
   EXWebBrowser:
@@ -556,6 +554,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-device-info"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNRate:
+    :path: "../node_modules/react-native-rate"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -612,7 +612,6 @@ SPEC CHECKSUMS:
   EXMailComposer: 8b50b7940fe7122954cd0eee2f47681f2539ee05
   EXPermissions: d2cafee9c72578ecc9ca121481e6c4a04a798861
   EXSQLite: 15268ec49f859e4594fe5b0a1c7a47913da0b67e
-  EXStoreReview: 898f46f8c7223f54e89c668ded8bccb2b372fb2d
   EXUpdates: 73400517f57f10b5df8efeaf5bf802b27fceb912
   EXWebBrowser: 9e11185de5c41c8d67a2daa7f2d42ab50deccc84
   FBLazyVector: aaeaf388755e4f29cd74acbc9e3b8da6d807c37f
@@ -655,6 +654,7 @@ SPEC CHECKSUMS:
   RNDateTimePicker: 501ab152e78882c183607e05074c37ce19ace5bf
   RNDeviceInfo: 59d3d9a0ac50adfc3a2d3c27bbbb4efc7ae8984c
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  RNRate: a747cbaa6040d72994861864c988037fe0696548
   RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
   RNScreens: 812b79d384e2bea7eebc4ec981469160d4948fd5
   RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46

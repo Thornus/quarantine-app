@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, Text } from 'react-native';
-import * as StoreReview from 'expo-store-review';
+import Rate, { AndroidMarket } from 'react-native-rate';
 import Icon from '@expo/vector-icons/Ionicons';
 import { store } from '../../store';
 import moment from 'moment';
@@ -59,11 +59,19 @@ const Home = ({navigation}) => {
       let {rating} = await getSavedData('rating') || {};
       if(!rating && daysCount > 2) {
         setTimeout(async () => {
-            if(StoreReview.isAvailableAsync()) {
-              StoreReview.requestReview();
+          const options = {
+            AppleAppID: '',
+            GooglePackageName: 'com.awesomity.quarantinesymptomstracker',
+            preferredAndroidMarket: AndroidMarket.Google,
+            preferInApp: true,
+            openAppStoreIfInAppFails: true
+          };
+    
+          Rate.rate(options, async (isSuccess) => {
+            if(isSuccess) {
+              await saveData({rating}, 'rating');
             }
-        
-            await saveData({rating}, 'rating');
+          });
         }, 2000);
       }
     }

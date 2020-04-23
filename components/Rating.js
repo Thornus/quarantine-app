@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import * as StoreReview from 'expo-store-review';
+import { StyleSheet , View } from 'react-native';
+import Rate, { AndroidMarket } from 'react-native-rate';
 import { AirbnbRating } from 'react-native-ratings';
-import { t } from 'i18n-js';
 import design from '../utils/design';
 import getSavedData from '../utils/getSavedData';
 import saveData from '../utils/saveData';
@@ -25,12 +24,20 @@ const Rating = () => {
 
   requestReview = async (rating) => {
     if(!hasRated && rating >= 3) {
-      if(StoreReview.isAvailableAsync()) {
-        StoreReview.requestReview();
-      }
-  
-      await saveData({rating}, 'rating');
-      setHasRated(true);
+      const options = {
+        AppleAppID: '',
+        GooglePackageName: 'com.awesomity.quarantinesymptomstracker',
+        preferredAndroidMarket: AndroidMarket.Google,
+        preferInApp: true,
+        openAppStoreIfInAppFails: true
+      };
+
+      Rate.rate(options, async (isSuccess) => {
+        if(isSuccess) {
+          await saveData({rating}, 'rating');
+          setHasRated(true);
+        }
+      });
     }
   };
 
