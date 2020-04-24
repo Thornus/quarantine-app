@@ -27,12 +27,14 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-
+    
     if(Platform.OS === 'android') {
       StatusBar.setHidden(true);
+    } else {
+      //uses the screens of react-native-screens, boosting performance
+      //crashes on some Androids using react-navigation v4, thus enabled on iOS only
+      enableScreens();
     }
-
-    enableScreens(); //uses the screens of react-native-screens, boosting performance
 
     i18n.translations = {
       "en-US": langs.english,

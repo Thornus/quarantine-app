@@ -23,10 +23,7 @@ const langCodesToLangMap = {
 
 const itemSkus = Platform.OS === 'ios' ? [] : ['remove_ads_android'];
 
-let purchaseUpdateSubscription = null;
-let purchaseErrorSubscription = null;
-
-purchaseUpdateSubscription = purchaseUpdatedListener((purchase) => {
+let purchaseUpdateSubscription = purchaseUpdatedListener((purchase) => {
   console.log('purchaseUpdatedListener', purchase);
   
   const receipt = purchase.transactionReceipt;
@@ -54,7 +51,7 @@ purchaseUpdateSubscription = purchaseUpdatedListener((purchase) => {
   }
 });
 
-purchaseErrorSubscription = purchaseErrorListener((error) => {
+let purchaseErrorSubscription = purchaseErrorListener((error) => {
   console.warn('purchaseErrorListener', error);
 });
 
@@ -116,7 +113,7 @@ const Settings = ({navigation}) => {
       try {
         const products = await RNIap.getProducts(itemSkus);
         // this.setState({products});
-        console.log(products)
+        console.log('products:', products)
       } catch(err) {
         console.warn(err); // standardized err.code and err.message available
       }
@@ -153,7 +150,7 @@ const Settings = ({navigation}) => {
         <Rating/>
       </SettingRow>
 
-      {hasAds && <SettingRow>        
+      {hasAds && <SettingRow>
         <ActionButton 
           text={t('buttons.removeAds')}
           onPress={() => requestPurchase(Platform.OS === 'ios' ? '' : 'remove_ads_android')} 

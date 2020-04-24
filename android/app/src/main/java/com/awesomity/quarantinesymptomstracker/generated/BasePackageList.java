@@ -15,7 +15,6 @@ public class BasePackageList {
         new expo.modules.firebase.core.FirebaseCorePackage(),
         new expo.modules.font.FontLoaderPackage(),
         new expo.modules.imageloader.ImageLoaderPackage(),
-        new expo.modules.inapppurchases.InAppPurchasesPackage(),
         new expo.modules.keepawake.KeepAwakePackage(),
         new expo.modules.lineargradient.LinearGradientPackage(),
         new expo.modules.localization.LocalizationPackage(),
